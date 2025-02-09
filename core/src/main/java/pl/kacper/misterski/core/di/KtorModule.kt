@@ -1,4 +1,4 @@
-package pl.kacper.misterski.arch.di
+package pl.kacper.misterski.core.di
 
 import dagger.Module
 import dagger.Provides
@@ -8,7 +8,7 @@ import io.ktor.client.HttpClient
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class KtorModule {
+object KtorModule {
 
     @Provides
     fun provideHttpClient() = HttpClient()

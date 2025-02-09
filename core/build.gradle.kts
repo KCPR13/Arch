@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.android.kapt)
+    alias(libs.plugins.kotlin.android.ksp)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -32,25 +33,27 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
+    }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.lifecycle.runtime.ktx)
+    api(libs.androidx.activity.compose)
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.ui)
+    api(libs.androidx.ui.graphics)
+    api(libs.androidx.ui.tooling.preview)
+    api(libs.androidx.material3)
 
     //KTOR
-    api(libs.ktor.client.core)
-    api(libs.ktor.client.okhttp)
-    api(libs.ktor.client.darwin)
+    api(libs.bundles.ktor.client)
 
     //Hilt
-    api(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
 
 }
