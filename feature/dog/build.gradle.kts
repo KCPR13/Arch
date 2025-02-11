@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.kacper.misterski.feature"
+    namespace = "pl.kacper.misterski.dog"
     compileSdk = 35
 
     defaultConfig {
@@ -33,15 +33,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
-    }
 }
 
 dependencies {
+    implementation(project(":core"))
+
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
-
 }
