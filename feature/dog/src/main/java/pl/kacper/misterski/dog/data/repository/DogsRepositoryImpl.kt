@@ -14,7 +14,9 @@ import pl.kacper.misterski.dog.data.model.DogsResponse
 
 private const val API_KEY = "live_DDLKKfmfq5oVnxUPaBViYBTJ11bU6pcCC8EhFNV1R4uFCTTiMQcsNiSWyrCZA5fQ"
 
-class DogsRepositoryImpl(private val httpClient: HttpClient) : DogsRepository {
+class DogsRepositoryImpl(
+    private val httpClient: HttpClient
+) : DogsRepository {
 
     override suspend fun fetchDogs(): Result<List<DogsDomainModel>> = withContext(Dispatchers.IO) {
         val response =

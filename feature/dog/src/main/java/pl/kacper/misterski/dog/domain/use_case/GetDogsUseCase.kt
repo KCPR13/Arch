@@ -7,14 +7,17 @@ import pl.kacper.misterski.dog.data.DogsRepository
 
 class GetDogsUseCase(private val dogsRepository: DogsRepository) {
 
-    operator fun invoke() = flow{
+    operator fun invoke() = flow {
 
-        val dogsResult = dogsRepository.fetchDogs()
-
-        when(dogsResult){
+        when (val dogsResult = dogsRepository.fetchDogs()) {
             is Result.Failure -> emit(Result.Failure(dogsResult.error))
             is Result.Success -> {
-                dogsResult.data
+
+                val mapped = dogsResult.data.mapIndexed { index, item ->
+                    item.copy(name = index.toString().plus(" ${item.name}"))
+                }
+
+                emit(Result.Success(mapped))
             }
         }
     }

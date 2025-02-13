@@ -47,6 +47,9 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
+    api(libs.androidx.compose.navigation)
+    api(libs.coil.compose)
+    api(libs.androidx.compose.hiltNavigation)
 
     //KTOR
     api(libs.bundles.ktor.client)
@@ -57,6 +60,7 @@ dependencies {
 
     //Room
     api(libs.androidx.room.runtime)
+    api(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
 
