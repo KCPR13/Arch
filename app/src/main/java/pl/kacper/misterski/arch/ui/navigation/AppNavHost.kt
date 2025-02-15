@@ -25,6 +25,8 @@ import pl.kacper.misterski.arch.ui.start.StartScreen
 import pl.kacper.misterski.core.utils.extensions.animatedDestination
 import pl.kacper.misterski.dog.ui.DogsScreen
 import pl.kacper.misterski.dog.ui.DogsViewModel
+import pl.kacper.misterski.news.ui.NewsScreen
+import pl.kacper.misterski.news.ui.NewsViewModel
 
 @Composable
 fun AppNavHost(
@@ -40,18 +42,36 @@ fun AppNavHost(
             StartScreen(modifier = modifier,
                 onDogsSelected = {
                     navController.navigate(NavigationItem.Dog.route)
-                })
+                },
+                onNewsSelected = {
+                    navController.navigate(NavigationItem.News.route)
+                }
+            )
         }
         animatedDestination(NavigationItem.Dog.route) {
             val viewModel: DogsViewModel = hiltViewModel()
             val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
-            DogsScreen(
+            DogsScreen (
                 modifier = modifier,
                 uiState = uiState,
                 onBackClick = {
                     navController.navigateUp()
                 },
+            )
+        }
+
+        animatedDestination(NavigationItem.News.route) {
+            val viewModel: NewsViewModel = hiltViewModel()
+            val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
+
+            NewsScreen(
+                modifier = modifier,
+                uiState = uiState,
+                onBackClick = {
+                    navController.navigateUp()
+                },
+                onRefresh = { viewModel.fetchData()}
             )
         }
     }

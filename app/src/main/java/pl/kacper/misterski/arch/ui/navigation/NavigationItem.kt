@@ -26,4 +26,6 @@ sealed class NavigationItem(
 
     data object Dog : NavigationItem(Screen.DOG.name)
 
+    data object News : NavigationItem(Screen.NEWS.name)
+
 }

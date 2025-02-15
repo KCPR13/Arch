@@ -1,6 +1,7 @@
 package pl.kacper.misterski.arch.ui.start
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -16,13 +17,21 @@ import pl.kacper.misterski.dog.R
 
 @Composable
 fun StartScreen(modifier: Modifier = Modifier,
-                onDogsSelected: () -> Unit) {
+                onDogsSelected: () -> Unit,
+                onNewsSelected: () -> Unit,) {
     Column(modifier,
         horizontalAlignment = Alignment.CenterHorizontally) {
         Button(modifier = Modifier.padding(16.dp),
-            onClick = {onDogsSelected.invoke()}) {
+            onClick = { onDogsSelected.invoke()}) {
             Text(modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.dogs_title),
+                textAlign = TextAlign.Center)
+        }
+        Spacer(Modifier.fillMaxWidth())
+        Button(modifier = Modifier.padding(16.dp),
+            onClick = {onNewsSelected.invoke()}) {
+            Text(modifier = Modifier.fillMaxWidth(),
+                text = stringResource(pl.kacper.misterski.arch.R.string.news_title),
                 textAlign = TextAlign.Center)
         }
 
@@ -32,5 +41,5 @@ fun StartScreen(modifier: Modifier = Modifier,
 @Preview
 @Composable
 private fun StartScreenPreview() {
-    StartScreen(onDogsSelected = {})
+    StartScreen(onDogsSelected = {}, onNewsSelected = {})
 }

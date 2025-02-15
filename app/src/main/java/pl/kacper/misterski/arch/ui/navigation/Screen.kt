@@ -21,5 +21,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 enum class Screen {
     START,
-    DOG
+    DOG,
+    NEWS
 }

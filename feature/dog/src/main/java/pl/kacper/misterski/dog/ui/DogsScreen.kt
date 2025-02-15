@@ -74,7 +74,7 @@ private fun DogsListScreen(
                 .fillMaxWidth()
                 .padding(top = 8.dp)
         ) {
-            Text(stringResource(R.string.back))
+            Text(stringResource(pl.kacper.misterski.core.R.string.back))
         }
     }
 }

@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.android.ksp)
     alias(libs.plugins.hilt.plugin)
@@ -8,17 +8,14 @@ plugins {
 }
 
 android {
-    namespace = "pl.kacper.misterski.arch"
+    namespace = "pl.kacper.misterski.news"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "pl.kacper.misterski.arch"
         minSdk = 30
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -37,21 +34,15 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
-    }
 }
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:dog"))
-    implementation(project(":feature:news"))
 
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    implementation(libs.accompanist.swiperefresh)
+
 }

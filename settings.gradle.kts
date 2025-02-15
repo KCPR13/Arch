@@ -23,3 +23,4 @@ rootProject.name = "arch"
 include(":app")
 include(":core")
 include(":feature:dog")
+include(":feature:news")
