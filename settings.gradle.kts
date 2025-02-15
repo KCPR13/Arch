@@ -21,6 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "arch"
 include(":app")
-include(":feature")
 include(":core")
 include(":feature:dog")
