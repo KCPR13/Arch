@@ -10,7 +10,7 @@ import pl.kacper.misterski.dog.data.DogsRepository
 import pl.kacper.misterski.core.data.Result
 import pl.kacper.misterski.dog.data.mapper.mapToDogsDomainModels
 import pl.kacper.misterski.dog.data.model.DogsDomainModel
-import pl.kacper.misterski.dog.data.model.DogsResponse
+import pl.kacper.misterski.dog.data.model.DogsResponseItem
 
 private const val API_KEY = "live_DDLKKfmfq5oVnxUPaBViYBTJ11bU6pcCC8EhFNV1R4uFCTTiMQcsNiSWyrCZA5fQ"
 
@@ -20,10 +20,10 @@ class DogsRepositoryImpl(
 
     override suspend fun fetchDogs(): Result<List<DogsDomainModel>> = withContext(Dispatchers.IO) {
         val response =
-            httpClient.get("https://api.thedogapi.com/v1/images/search?limit=10&api_key=$API_KEY")
+            httpClient.get("https://api.thedogapi.com/v1/images/search?limit=15&api_key=$API_KEY")
 
         if (response.status == HttpStatusCode.OK) {
-            Result.Success(response.body<DogsResponse>().mapToDogsDomainModels())
+            Result.Success(response.body< ArrayList<DogsResponseItem>>().mapToDogsDomainModels())
         } else {
             Result.Failure(Exception(response.status.description))
         }

@@ -1,20 +1,17 @@
 package pl.kacper.misterski.dog.data.mapper
 
 import pl.kacper.misterski.dog.data.model.DogsDomainModel
-import pl.kacper.misterski.dog.data.model.DogsResponse
+import pl.kacper.misterski.dog.data.model.DogsResponseItem
 
-fun DogsResponse.mapToDogsDomainModels() = this.mapNotNull {
-    it.breeds.firstOrNull()?.let { breed ->
+fun  ArrayList<DogsResponseItem>.mapToDogsDomainModels() = this.mapNotNull {
+    it.breeds?.mapNotNull{ breed ->
         DogsDomainModel(
-            id = it.id,
-            url = it.url,
-            name = breed.name,
-            height = breed.height.metric,
-            lifeSpan = breed.life_span,
-            origin = breed.origin,
-            temperament = breed.origin,
-            weight = breed.weight.metric
+            id = it.id.orEmpty(),
+            url = it.url.orEmpty(),
+            name = breed?.name.orEmpty(),
+            height = breed?.height?.metric.orEmpty(),
+            lifeSpan = breed?.lifeSpan.orEmpty(),
+            weight = breed?.weight?.metric.orEmpty()
         )
     }
-
-}
+}.flatten()

@@ -2,26 +2,28 @@ package pl.kacper.misterski.dog.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import pl.kacper.misterski.core.ui.ErrorScreen
+import pl.kacper.misterski.core.ui.LoadingScreen
 import pl.kacper.misterski.dog.R
 import pl.kacper.misterski.dog.ui.model.DogsUiModel
 
@@ -31,7 +33,7 @@ fun DogsScreen(modifier: Modifier, uiState: DogsUiState, onBackClick: () -> Unit
 
     when (uiState) {
         is DogsUiState.Failure -> ErrorScreen(message = uiState.error.message ?: "Unknown Error")
-        is DogsUiState.Loading -> CircularProgressIndicator()
+        is DogsUiState.Loading -> LoadingScreen(Modifier.size(60.dp))
         is DogsUiState.Success -> DogsListScreen(
             modifier = modifier,
             models = uiState.list,
@@ -49,7 +51,19 @@ private fun DogsListScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        LazyColumn(modifier = Modifier.weight(1f)) {
+        Text(
+            text = stringResource(R.string.dogs_title),
+            fontSize = 24.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2), // Change to desired column count
+            modifier = Modifier.weight(1f),
+            contentPadding = PaddingValues(8.dp)
+        ) {
             items(models) { item ->
                 DogItem(item)
             }
@@ -67,18 +81,25 @@ private fun DogsListScreen(
 
 @Composable
 private fun DogItem(model: DogsUiModel) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
     ) {
         Image(
-            modifier = Modifier.size(40.dp),
+            modifier = Modifier
+                .size(200.dp)
+                .align(Alignment.CenterHorizontally),
             painter = rememberAsyncImagePainter(model.url),
             contentDescription = "Loaded Image"
         )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = model.title, style = MaterialTheme.typography.bodyLarge)
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = model.title,
+            textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 

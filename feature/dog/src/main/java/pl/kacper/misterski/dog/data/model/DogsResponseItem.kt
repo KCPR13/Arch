@@ -1,9 +1,19 @@
 package pl.kacper.misterski.dog.data.model
 
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class DogsResponseItem(
-    val breeds: List<Breed>,
-    val height: Int,
-    val id: String,
-    val url: String,
-    val width: Int
+    @SerialName("breeds")
+    val breeds: List<Breed?>?,
+    @SerialName("height")
+    val height: Int?,
+    @SerialName("id")
+    val id: String?,
+    @SerialName("url")
+    val url: String?,
+    @SerialName("width")
+    val width: Int?
 )

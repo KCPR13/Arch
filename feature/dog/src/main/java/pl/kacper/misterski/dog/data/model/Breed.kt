@@ -1,14 +1,19 @@
 package pl.kacper.misterski.dog.data.model
 
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Breed(
-    val bred_for: String,
-    val breed_group: String,
-    val height: Height,
-    val id: Int,
-    val life_span: String,
-    val name: String,
-    val origin: String,
-    val reference_image_id: String,
-    val temperament: String,
-    val weight: Weight
+    @SerialName("height")
+    val height: Height?,
+    @SerialName("id")
+    val id: Int?,
+    @SerialName("life_span")
+    val lifeSpan: String?,
+    @SerialName("name")
+    val name: String?,
+    @SerialName("weight")
+    val weight: Weight?
 )

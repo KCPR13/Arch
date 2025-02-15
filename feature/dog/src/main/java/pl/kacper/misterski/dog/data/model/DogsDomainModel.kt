@@ -6,7 +6,5 @@ data class DogsDomainModel(
     val name: String,
     val height: String,
     val lifeSpan: String,
-    val origin: String,
-    val temperament: String,
     val weight: String
 )
