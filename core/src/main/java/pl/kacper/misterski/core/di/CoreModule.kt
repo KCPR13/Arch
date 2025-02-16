@@ -1,6 +1,7 @@
 package pl.kacper.misterski.core.di
 
 import android.content.Context
+import android.location.LocationManager
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,7 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import pl.kacper.misterski.core.database.AppDatabase
+import pl.kacper.misterski.core.managers.AppLocationManagerImpl
 import javax.inject.Singleton
 
 @Module
@@ -41,4 +43,9 @@ object CoreModule {
             AppDatabase::class.java,
             "app_database"
         ).build()
+
+    @Provides
+    @Singleton
+    fun provideAppLocationManagerImpl(@ApplicationContext context: Context) =
+       AppLocationManagerImpl(context.getSystemService(LocationManager::class.java) as LocationManager)
 }
