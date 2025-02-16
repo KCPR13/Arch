@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pl.kacper.misterski.arch.ui.start.StartScreen
+import pl.kacper.misterski.arch.ui.start.StartViewModel
 import pl.kacper.misterski.core.utils.extensions.animatedDestination
 import pl.kacper.misterski.dog.ui.DogsScreen
 import pl.kacper.misterski.dog.ui.DogsViewModel
@@ -39,13 +40,16 @@ fun AppNavHost(
         startDestination = NavigationItem.Start.route,
     ) {
         animatedDestination(NavigationItem.Start.route) {
+            val viewModel: StartViewModel = hiltViewModel()
+
             StartScreen(modifier = modifier,
                 onDogsSelected = {
                     navController.navigate(NavigationItem.Dog.route)
                 },
                 onNewsSelected = {
                     navController.navigate(NavigationItem.News.route)
-                }
+                },
+                locationStatusUiModel = viewModel.locationStatus
             )
         }
         animatedDestination(NavigationItem.Dog.route) {

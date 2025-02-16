@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import io.ktor.client.HttpClient
+import pl.kacper.misterski.dog.data.remote.DogsRemoteDataSourceImpl
 import pl.kacper.misterski.dog.data.repository.DogsRepositoryImpl
 import pl.kacper.misterski.dog.domain.use_case.GetDogsUseCase
 
@@ -16,6 +17,8 @@ object DogsModule {
     fun provideGetDogsUseCase(dogsRepository: DogsRepositoryImpl) = GetDogsUseCase(dogsRepository)
 
     @Provides
-    fun provideDogsRepository(httpClient: HttpClient) = DogsRepositoryImpl(httpClient)
+    fun provideDogsRepository(dogsRemoteDataSourceImpl: DogsRemoteDataSourceImpl) = DogsRepositoryImpl(dogsRemoteDataSourceImpl)
 
+    @Provides
+    fun provideDogsRemoteDataSource(httpClient: HttpClient) = DogsRemoteDataSourceImpl(httpClient)
 }
