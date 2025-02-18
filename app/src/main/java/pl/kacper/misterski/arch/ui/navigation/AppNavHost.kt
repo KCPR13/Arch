@@ -23,11 +23,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pl.kacper.misterski.arch.ui.start.StartScreen
 import pl.kacper.misterski.arch.ui.start.StartViewModel
-import pl.kacper.misterski.core.utils.extensions.animatedDestination
-import pl.kacper.misterski.dog.ui.DogsScreen
-import pl.kacper.misterski.dog.ui.DogsViewModel
-import pl.kacper.misterski.news.ui.NewsScreen
-import pl.kacper.misterski.news.ui.NewsViewModel
+import pl.kacper.misterski.feature.dog.ui.DogsScreen
+import pl.kacper.misterski.feature.dog.ui.DogsViewModel
+import pl.kacper.misterski.feature.news.ui.NewsScreen
+import pl.kacper.misterski.feature.news.ui.NewsViewModel
 
 @Composable
 fun AppNavHost(

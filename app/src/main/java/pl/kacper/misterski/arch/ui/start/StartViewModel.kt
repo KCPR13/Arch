@@ -6,7 +6,7 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pl.kacper.misterski.arch.ui.start.model.LocationStatusUiModel
-import pl.kacper.misterski.core.managers.AppLocationManagerImpl
+import pl.kacper.misterski.arch.util.managers.AppLocationManagerImpl
 import javax.inject.Inject
 
 

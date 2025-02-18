@@ -47,11 +47,17 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(":core:ui"))
     implementation(project(":feature:dog"))
     implementation(project(":feature:news"))
+
+    //Test
+    testImplementation(libs.junit)
 
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.compose.hiltNavigation)
 }

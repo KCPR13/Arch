@@ -21,6 +21,15 @@ dependencyResolutionManagement {
 
 rootProject.name = "arch"
 include(":app")
-include(":core")
 include(":feature:dog")
 include(":feature:news")
+include(":data")
+include(":domain")
+include(":data:news")
+include(":data:dog")
+include(":domain:dog")
+include(":domain:news")
+include(":core:data")
+include(":core:domain")
+include(":core:ui")
+include(":core:common")

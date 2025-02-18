@@ -37,7 +37,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:common"))
+
+    implementation(project(":domain:news"))
+
+    //Test
+    testImplementation(libs.junit)
 
     //Hilt
     implementation(libs.hilt.android)

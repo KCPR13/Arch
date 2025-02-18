@@ -15,10 +15,6 @@
  */
 package pl.kacper.misterski.arch.ui.navigation
 
-import kotlinx.serialization.Serializable
-
-
-@Serializable
 enum class Screen {
     START,
     DOG,
