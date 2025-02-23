@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pl.kacper.misterski.common.result.Result
-import pl.kacper.misterski.news.use_case.GetNewsUseCase
+import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.domain.news.use_case.GetNewsUseCase
 import pl.kacper.misterski.feature.news.ui.mapper.mapToNewsUiModels
 import javax.inject.Inject
 

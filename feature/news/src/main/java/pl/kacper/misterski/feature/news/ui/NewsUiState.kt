@@ -1,6 +1,6 @@
 package pl.kacper.misterski.feature.news.ui
 
-import pl.kacper.misterski.news.ui.model.NewsUiModel
+import pl.kacper.misterski.feature.news.ui.model.NewsUiModel
 
 sealed class NewsUiState {
     data object Loading : NewsUiState()
