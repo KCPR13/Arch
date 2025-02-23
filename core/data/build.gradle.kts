@@ -38,6 +38,10 @@ android {
 dependencies {
     api(project(":core:common"))
 
+    //Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
+
     //KTOR
     api(libs.bundles.ktor.client)
 

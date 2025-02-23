@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,10 +23,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import pl.kacper.misterski.dog.R
 import pl.kacper.misterski.feature.dog.ui.model.DogsUiModel
-import pl.kacper.misterski.ui.error.ErrorScreen
-import pl.kacper.misterski.ui.loading.LoadingScreen
+import pl.kacper.misterski.core.ui.error.ErrorScreen
+import pl.kacper.misterski.core.ui.loading.LoadingScreen
+import pl.kacper.misterski.dog.R
 
 
 @Composable
@@ -55,7 +56,7 @@ private fun DogsListScreen(
             .padding(16.dp)
     ) {
         Text(
-            text = stringResource(R.string.dogs_title),
+            text = stringResource(R.string.dogs),
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -109,9 +110,11 @@ private fun DogItem(model: DogsUiModel) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDogsScreen() {
-    DogsScreen(
-        modifier = Modifier,
-        onBackClick = {},
-        uiState = DogsUiState.Loading
-    )
+    MaterialTheme {
+        DogsScreen(
+            modifier = Modifier,
+            onBackClick = {},
+            uiState = DogsUiState.Loading
+        )
+    }
 }

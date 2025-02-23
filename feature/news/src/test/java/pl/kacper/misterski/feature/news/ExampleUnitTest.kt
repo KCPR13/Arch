@@ -1,4 +1,4 @@
-package pl.kacper.misterski.news
+package pl.kacper.misterski.feature.news
 
 import org.junit.Test
 

@@ -1,6 +1,7 @@
-package pl.kacper.misterski.ui.error
+package pl.kacper.misterski.core.ui.error
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,5 +18,8 @@ fun ErrorScreen(modifier: Modifier = Modifier, message: String) {
 @Preview
 @Composable
 private fun ErrorScreenPreview() {
-    ErrorScreen(message = "test")
+    MaterialTheme {
+        ErrorScreen(message = "test")
+    }
+
 }

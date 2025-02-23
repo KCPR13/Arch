@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -20,12 +21,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pl.kacper.misterski.news.R
-import pl.kacper.misterski.news.ui.model.NewsUiModel
-import pl.kacper.misterski.ui.error.ErrorScreen
-import pl.kacper.misterski.ui.loading.LoadingScreen
+import pl.kacper.misterski.feature.news.ui.model.NewsUiModel
+import pl.kacper.misterski.core.ui.error.ErrorScreen
+import pl.kacper.misterski.core.ui.loading.LoadingScreen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,14 +66,13 @@ private fun NewsListScreen(
     modifier: Modifier, models: List<NewsUiModel>,
     onBackClick: () -> Unit
 ) {
-
         Column(
             modifier = modifier
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
             Text(
-                text = stringResource(R.string.news),
+                text = "News2",
                 fontSize = 24.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -125,13 +125,17 @@ private fun NewItem(modifier: Modifier, model: NewsUiModel) {
 
 }
 
-@Preview(showBackground = true)
+@PreviewLightDark
+@Preview
 @Composable
 fun PreviewDogsScreen() {
-    NewsScreen(
-        modifier = Modifier,
-        onBackClick = {},
-        uiState = NewsUiState.Loading,
-        onRefresh = {}
-    )
+    MaterialTheme {
+        NewsScreen(
+            modifier = Modifier,
+            onBackClick = {},
+            uiState = NewsUiState.Loading,
+            onRefresh = {}
+        )
+    }
+
 }

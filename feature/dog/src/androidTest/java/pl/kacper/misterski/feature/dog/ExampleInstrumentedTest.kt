@@ -1,4 +1,4 @@
-package pl.kacper.misterski.dog
+package pl.kacper.misterski.feature.dog
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

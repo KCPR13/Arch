@@ -1,4 +1,4 @@
-package pl.kacper.misterski.ui
+package pl.kacper.misterski.core.ui
 
 import org.junit.Test
 

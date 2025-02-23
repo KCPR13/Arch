@@ -35,6 +35,10 @@ android {
 }
 
 dependencies {
+    //Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
+
     api(libs.androidx.core.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)
     api(libs.androidx.activity.compose)
@@ -43,5 +47,8 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
+    api(libs.ui.tooling.preview)
+
+
 
 }

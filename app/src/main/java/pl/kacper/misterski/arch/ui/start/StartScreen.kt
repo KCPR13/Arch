@@ -43,7 +43,7 @@ fun StartScreen(
             onClick = { onDogsSelected.invoke() }) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(R.string.dogs_title),
+                text = stringResource(pl.kacper.misterski.arch.R.string.dogs_title),
                 textAlign = TextAlign.Center
             )
         }

@@ -1,4 +1,4 @@
-package pl.kacper.misterski.ui.loading
+package pl.kacper.misterski.core.ui.loading
 
 
 import androidx.compose.foundation.layout.Arrangement

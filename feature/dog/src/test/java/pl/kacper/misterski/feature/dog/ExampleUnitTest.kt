@@ -1,4 +1,4 @@
-package pl.kacper.misterski.dog
+package pl.kacper.misterski.feature.dog
 
 import org.junit.Test
 
