@@ -3,7 +3,7 @@ package pl.kacper.misterski.domain.news.use_case
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
 import pl.kacper.misterski.data.news.NewsRepository
 import pl.kacper.misterski.domain.news.mapper.mapToNewsDomainModels
 

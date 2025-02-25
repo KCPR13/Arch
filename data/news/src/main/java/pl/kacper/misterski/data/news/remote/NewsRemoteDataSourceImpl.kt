@@ -6,7 +6,7 @@ import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
 import pl.kacper.misterski.data.news.NewsRemoteDataSource
 import pl.kacper.misterski.data.news.model.NewsResponseItem
 import javax.inject.Inject

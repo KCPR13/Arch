@@ -1,14 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.android.ksp)
-    alias(libs.plugins.hilt.plugin)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "pl.kacper.misterski.dog"
+    namespace = "pl.kacper.misterski.common"
     compileSdk = 35
 
     defaultConfig {
@@ -37,19 +33,10 @@ android {
 }
 
 dependencies {
-
-
-    implementation(project(":core:ui"))
-    implementation(project(":common"))
-    implementation(project(":domain:dog"))
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
 
-    //Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    api(libs.kotlinx.serialization.json)
 
-    //Coil
-    implementation(libs.coil.compose)
 }

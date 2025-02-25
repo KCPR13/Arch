@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.android.ksp)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -35,8 +37,8 @@ android {
 }
 
 dependencies {
+    api(project(":common"))
 
-    implementation(project(":data:dog"))
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)

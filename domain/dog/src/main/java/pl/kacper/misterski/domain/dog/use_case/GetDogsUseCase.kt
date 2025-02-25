@@ -3,9 +3,9 @@ package pl.kacper.misterski.domain.dog.use_case
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
 import pl.kacper.misterski.domain.dog.mapper.mapToDogsDomainModels
-import pl.kacper.misterski.feature.data.dog.DogsRepository
+import pl.kacper.misterski.domain.dog.DogsRepository
 
 class GetDogsUseCase(private val dogsRepository: DogsRepository) {
 

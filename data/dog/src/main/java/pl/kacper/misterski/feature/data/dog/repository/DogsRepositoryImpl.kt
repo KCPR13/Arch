@@ -2,9 +2,9 @@ package pl.kacper.misterski.feature.data.dog.repository
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
+import pl.kacper.misterski.domain.dog.DogsRepository
 import pl.kacper.misterski.feature.data.dog.DogsRemoteDataSource
-import pl.kacper.misterski.feature.data.dog.DogsRepository
 import javax.inject.Inject
 
 // TODO K @Inject constructor ok?

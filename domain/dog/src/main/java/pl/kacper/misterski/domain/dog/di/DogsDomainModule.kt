@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import pl.kacper.misterski.domain.dog.use_case.GetDogsUseCase
-import pl.kacper.misterski.feature.data.dog.DogsRepository
+import pl.kacper.misterski.domain.dog.DogsRepository
 
 //TODO K kiedy jakie kompoenenty
 @Module

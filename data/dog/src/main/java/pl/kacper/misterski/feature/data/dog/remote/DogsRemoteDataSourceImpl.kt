@@ -6,14 +6,15 @@ import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
+import pl.kacper.misterski.feature.data.dog.model.remote.DogsResponseItem
 import pl.kacper.misterski.feature.data.dog.DogsRemoteDataSource
-import pl.kacper.misterski.feature.data.dog.model.DogsResponseItem
 import javax.inject.Inject
 
 private const val API_KEY = "live_DDLKKfmfq5oVnxUPaBViYBTJ11bU6pcCC8EhFNV1R4uFCTTiMQcsNiSWyrCZA5fQ"
 
- internal class DogsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) : DogsRemoteDataSource {
+class DogsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) :
+    DogsRemoteDataSource {
 
     override suspend fun fetchDogs() = withContext(Dispatchers.IO) {
         val response =

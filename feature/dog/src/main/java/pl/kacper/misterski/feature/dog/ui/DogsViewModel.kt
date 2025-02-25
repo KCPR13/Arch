@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import pl.kacper.misterski.core.common.result.Result
+import pl.kacper.misterski.common.result.Result
 import pl.kacper.misterski.domain.dog.use_case.GetDogsUseCase
 import pl.kacper.misterski.feature.dog.ui.mapper.mapToDogsUiModels
 import javax.inject.Inject
