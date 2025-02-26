@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.data.news.NewsRepository
 import pl.kacper.misterski.domain.news.use_case.GetNewsUseCase
 
@@ -13,5 +14,8 @@ import pl.kacper.misterski.domain.news.use_case.GetNewsUseCase
 object NewsDomainModule {
 
     @Provides
-    fun provideGetNewsUseCase(newsRepository: NewsRepository) = GetNewsUseCase(newsRepository)
+    fun provideGetNewsUseCase(
+        newsRepository: NewsRepository,
+        formatDateUseCase: FormatDateUseCase
+    ) = GetNewsUseCase(newsRepository, formatDateUseCase)
 }

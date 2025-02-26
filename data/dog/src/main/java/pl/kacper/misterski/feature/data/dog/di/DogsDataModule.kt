@@ -24,5 +24,3 @@ abstract class DogsDataModule {
     internal abstract fun provideDogsRemoteDataSource(dogsRemoteDataSource: DogsRemoteDataSourceImpl)
             : DogsRemoteDataSource
 }
-
-// TODO K co z usecase który jest uzywany w kilku ficzerach
