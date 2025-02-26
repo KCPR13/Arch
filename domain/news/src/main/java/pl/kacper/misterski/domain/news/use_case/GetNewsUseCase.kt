@@ -4,8 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import pl.kacper.misterski.common.result.Result
-import pl.kacper.misterski.data.news.NewsRepository
-import pl.kacper.misterski.domain.news.mapper.mapToNewsDomainModels
+import pl.kacper.misterski.domain.news.NewsRepository
 
 
 class GetNewsUseCase(private val newsRepository: NewsRepository) {
@@ -15,7 +14,7 @@ class GetNewsUseCase(private val newsRepository: NewsRepository) {
         when (val result = newsRepository.fetchNews()) {
             is Result.Failure -> emit(Result.Failure(result.error))
             is Result.Success -> {
-                emit(Result.Success(result.data.mapToNewsDomainModels()))
+                emit(Result.Success(result.data))
             }
         }
     }.flowOn(Dispatchers.IO)

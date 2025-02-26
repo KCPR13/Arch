@@ -1,4 +1,4 @@
-package pl.kacper.misterski.data.news.model
+package pl.kacper.misterski.data.news.model.remote
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

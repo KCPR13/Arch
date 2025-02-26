@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":common"))
     implementation(project(":domain:dog"))
+    implementation(project(":data:dog"))// TODO K bez tego nie wie jak rozwiązać dogRepository, analogicznie w news
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)

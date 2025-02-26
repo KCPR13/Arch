@@ -1,9 +1,9 @@
 package pl.kacper.misterski.domain.dog
 
 import pl.kacper.misterski.common.result.Result
+import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 
 interface DogsRepository {
-    //TODO K WHERE MODELS?
-    suspend fun fetchDogs(): Result<List<DogsResponseItem>>
+    suspend fun fetchDogs(): Result<List<DogsDomainModel>>
 
 }

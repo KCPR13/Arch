@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Breed(
     @SerialName("height")
-    val height: pl.kacper.misterski.feature.data.dog.model.remote.Height?,
+    val height: Height?,
     @SerialName("id")
     val id: Int?,
     @SerialName("life_span")
@@ -15,5 +15,5 @@ data class Breed(
     @SerialName("name")
     val name: String?,
     @SerialName("weight")
-    val weight: pl.kacper.misterski.feature.data.dog.model.remote.Weight?
+    val weight: Weight?
 )

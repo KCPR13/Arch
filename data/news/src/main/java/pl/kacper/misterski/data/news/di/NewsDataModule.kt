@@ -5,21 +5,21 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import pl.kacper.misterski.data.news.NewsRemoteDataSource
-import pl.kacper.misterski.data.news.NewsRepository
+import pl.kacper.misterski.domain.news.NewsRepository
 import pl.kacper.misterski.data.news.remote.NewsRemoteDataSourceImpl
 import pl.kacper.misterski.data.news.repository.NewsRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class NewsDataModule {
+interface  NewsDataModule {
 
     @Binds
-    internal abstract fun provideNewsRepository(
+     fun provideNewsRepository(
         newsRepositoryImpl: NewsRepositoryImpl
     ): NewsRepository
 
     @Binds
-    internal abstract fun provideNewsRemoteDataSource(newsRemoteDataSource: NewsRemoteDataSourceImpl)
+    fun provideNewsRemoteDataSource(newsRemoteDataSource: NewsRemoteDataSourceImpl)
             : NewsRemoteDataSource
 }
 

@@ -1,6 +1,6 @@
-package pl.kacper.misterski.domain.news.mapper
+package pl.kacper.misterski.data.news.mapper
 
-import pl.kacper.misterski.data.news.model.NewsResponseItem
+import pl.kacper.misterski.data.news.model.remote.NewsResponseItem
 import pl.kacper.misterski.domain.news.model.NewsDomainModel
 
 fun List<NewsResponseItem>.mapToNewsDomainModels() = this.mapNotNull { responseItem ->

@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":common"))
 
     implementation(project(":domain:news"))
+    implementation(project(":data:news"))
 
     //Test
     testImplementation(libs.junit)

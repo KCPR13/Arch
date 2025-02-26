@@ -1,9 +1,8 @@
 package pl.kacper.misterski.data.news
 
-import pl.kacper.misterski.common.result.Result
-import pl.kacper.misterski.data.news.model.NewsResponseItem
+import io.ktor.client.statement.HttpResponse
 
 interface NewsRemoteDataSource {
-    suspend fun fetchNews(): Result<ArrayList<NewsResponseItem>>
+    suspend fun fetchNews(): HttpResponse
 
 }

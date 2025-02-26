@@ -35,8 +35,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":data:news"))
-
+    implementation(project(":common"))
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
