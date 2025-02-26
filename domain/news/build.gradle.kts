@@ -36,6 +36,8 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":core:domain"))
+
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
