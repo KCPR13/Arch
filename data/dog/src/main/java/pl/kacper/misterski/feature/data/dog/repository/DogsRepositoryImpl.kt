@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import pl.kacper.misterski.common.util.result.Result
 import pl.kacper.misterski.domain.dog.DogsRepository
-import pl.kacper.misterski.feature.data.dog.DogsRemoteDataSource
+import pl.kacper.misterski.feature.data.dog.data_source.remote.DogsRemoteDataSource
 import pl.kacper.misterski.feature.data.dog.mapper.mapToDogsDomainModels
 import pl.kacper.misterski.feature.data.dog.model.remote.DogsResponseItem
 import javax.inject.Inject

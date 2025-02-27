@@ -10,7 +10,6 @@ import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.dog.DogsRepository
 import java.time.OffsetDateTime
 
-//TODO K data source są w pakiecie data_source i tam pakiety remote local
 // TODO K opis architektury aplikacji
 //TODO K graph przepływu danych + graph architektury
 //TODO K  firebase analitics(osobny moduł)?

@@ -4,9 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import pl.kacper.misterski.data.news.NewsRemoteDataSource
+import pl.kacper.misterski.data.news.data_source.remote.NewsRemoteDataSource
 import pl.kacper.misterski.domain.news.NewsRepository
-import pl.kacper.misterski.data.news.remote.NewsRemoteDataSourceImpl
+import pl.kacper.misterski.data.news.data_source.remote.NewsRemoteDataSourceImpl
 import pl.kacper.misterski.data.news.repository.NewsRepositoryImpl
 
 @Module

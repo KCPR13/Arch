@@ -1,10 +1,9 @@
-package pl.kacper.misterski.data.news.remote
+package pl.kacper.misterski.data.news.data_source.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pl.kacper.misterski.data.news.NewsRemoteDataSource
 import javax.inject.Inject
 
 

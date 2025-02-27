@@ -37,7 +37,8 @@ android {
 }
 
 dependencies {
-    api(project(":core:data"))
+    implementation(project(":core:data"))
+    implementation(project(":common:util"))
     implementation(project(":domain:news"))
     //Test
     testImplementation(libs.junit)

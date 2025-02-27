@@ -5,7 +5,7 @@ import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import pl.kacper.misterski.common.util.result.Result
-import pl.kacper.misterski.data.news.NewsRemoteDataSource
+import pl.kacper.misterski.data.news.data_source.remote.NewsRemoteDataSource
 import pl.kacper.misterski.data.news.mapper.mapToNewsDomainModels
 import pl.kacper.misterski.data.news.model.remote.NewsResponseItem
 import pl.kacper.misterski.domain.news.NewsRepository

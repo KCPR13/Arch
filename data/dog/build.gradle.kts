@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:util"))
     implementation(project(":core:data"))
     implementation(project(":domain:dog"))
 

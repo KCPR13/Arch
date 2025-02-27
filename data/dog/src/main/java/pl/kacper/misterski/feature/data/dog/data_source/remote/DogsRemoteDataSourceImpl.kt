@@ -1,10 +1,9 @@
-package pl.kacper.misterski.feature.data.dog.remote
+package pl.kacper.misterski.feature.data.dog.data_source.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pl.kacper.misterski.feature.data.dog.DogsRemoteDataSource
 import javax.inject.Inject
 
 private const val API_KEY = "live_DDLKKfmfq5oVnxUPaBViYBTJ11bU6pcCC8EhFNV1R4uFCTTiMQcsNiSWyrCZA5fQ"
