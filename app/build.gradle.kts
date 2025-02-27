@@ -47,8 +47,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
+    implementation(project(":common:ui"))
+
+    implementation(project(":data:dog"))
+    implementation(project(":domain:dog"))
     implementation(project(":feature:dog"))
+
+
+    implementation(project(":data:news"))
+    implementation(project(":domain:news"))
     implementation(project(":feature:news"))
 
     //Test
@@ -59,7 +66,4 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
-
-    implementation(libs.androidx.compose.navigation)
-    implementation(libs.androidx.compose.hiltNavigation)
 }

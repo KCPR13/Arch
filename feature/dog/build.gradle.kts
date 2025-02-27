@@ -37,11 +37,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:ui"))
+    implementation(project(":common:util"))
 
-
-    implementation(project(":core:ui"))
-    implementation(project(":core:common"))
     implementation(project(":domain:dog"))
+
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)

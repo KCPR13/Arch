@@ -37,8 +37,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
-    implementation(project(":core:common"))
+    implementation(project(":common:ui"))
+    implementation(project(":common:util"))
 
     implementation(project(":domain:news"))
 

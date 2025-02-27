@@ -6,7 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.dog.use_case.GetDogsUseCase
-import pl.kacper.misterski.feature.data.dog.DogsRepository
+import pl.kacper.misterski.domain.dog.DogsRepository
 
 //TODO K kiedy jakie kompoenenty
 @Module
@@ -14,10 +14,11 @@ import pl.kacper.misterski.feature.data.dog.DogsRepository
 object DogsDomainModule {
 
     @Provides
-    fun provideGetDogsUseCase(
-        dogsRepository: DogsRepository,
-        formatDateUseCase: FormatDateUseCase
-    ) = GetDogsUseCase(dogsRepository, formatDateUseCase)
+    fun provideGetDogsUseCase(dogsRepository: DogsRepository,
+                              formatDateUseCase: FormatDateUseCase) = GetDogsUseCase(
+        dogsRepository = dogsRepository,
+        formatDateUseCase = formatDateUseCase
+    )
 
 }
 

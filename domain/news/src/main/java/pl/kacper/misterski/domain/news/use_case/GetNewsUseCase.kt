@@ -4,11 +4,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import pl.kacper.misterski.core.common.result.Result
-import pl.kacper.misterski.core.common.result.getDataOrNull
+import pl.kacper.misterski.common.util.result.Result
+import pl.kacper.misterski.common.util.result.getDataOrNull
 import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
-import pl.kacper.misterski.data.news.NewsRepository
-import pl.kacper.misterski.domain.news.mapper.mapToNewsDomainModels
+import pl.kacper.misterski.domain.news.NewsRepository
 import java.time.OffsetDateTime
 
 
@@ -25,7 +24,7 @@ class GetNewsUseCase(
                 val now = OffsetDateTime.now()
                 val date = formatDateUseCase(now).firstOrNull()?.getDataOrNull()
 
-                emit(Result.Success(result.data.mapToNewsDomainModels().map {
+                emit(Result.Success(result.data.map {
                     it.copy(title = date?.plus("\n").plus(it.title))
                 }))
             }

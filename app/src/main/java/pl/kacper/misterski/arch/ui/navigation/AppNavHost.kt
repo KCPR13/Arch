@@ -23,8 +23,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pl.kacper.misterski.arch.ui.start.StartScreen
 import pl.kacper.misterski.arch.ui.start.StartViewModel
-import pl.kacper.misterski.feature.dog.ui.DogsScreen
-import pl.kacper.misterski.feature.dog.ui.DogsViewModel
+import pl.kacper.misterski.common.ui.navigation.NavigationItem
+import pl.kacper.misterski.common.ui.navigation.animatedDestination
+import pl.kacper.misterski.feature.dog.ui.dogs
 import pl.kacper.misterski.feature.news.ui.NewsScreen
 import pl.kacper.misterski.feature.news.ui.NewsViewModel
 
@@ -41,7 +42,8 @@ fun AppNavHost(
         animatedDestination(NavigationItem.Start.route) {
             val viewModel: StartViewModel = hiltViewModel()
 
-            StartScreen(modifier = modifier,
+            StartScreen(
+                modifier = modifier,
                 onDogsSelected = {
                     navController.navigate(NavigationItem.Dog.route)
                 },
@@ -51,18 +53,11 @@ fun AppNavHost(
                 locationStatusUiModel = viewModel.locationStatus
             )
         }
-        animatedDestination(NavigationItem.Dog.route) {
-            val viewModel: DogsViewModel = hiltViewModel()
-            val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
-            DogsScreen (
-                modifier = modifier,
-                uiState = uiState,
-                onBackClick = {
-                    navController.navigateUp()
-                },
-            )
-        }
+        dogs(modifier = modifier,
+            onBackClick = {
+                navController.navigateUp()
+            })
 
         animatedDestination(NavigationItem.News.route) {
             val viewModel: NewsViewModel = hiltViewModel()
@@ -74,7 +69,7 @@ fun AppNavHost(
                 onBackClick = {
                     navController.navigateUp()
                 },
-                onRefresh = { viewModel.fetchData()}
+                onRefresh = { viewModel.fetchData() }
             )
         }
     }
