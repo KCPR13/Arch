@@ -49,6 +49,7 @@ dependencies {
     api(libs.androidx.material3)
     api(libs.ui.tooling.preview)
 
-
+    api(libs.androidx.compose.navigation)
+    api(libs.androidx.compose.hiltNavigation)
 
 }

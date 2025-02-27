@@ -15,7 +15,10 @@ object DogsDomainModule {
 
     @Provides
     fun provideGetDogsUseCase(dogsRepository: DogsRepository,
-                              formatDateUseCase: FormatDateUseCase) = GetDogsUseCase(dogsRepository,formatDateUseCase)
+                              formatDateUseCase: FormatDateUseCase) = GetDogsUseCase(
+        dogsRepository = dogsRepository,
+        formatDateUseCase = formatDateUseCase
+    )
 
 }
 

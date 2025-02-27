@@ -1,4 +1,4 @@
-package pl.kacper.misterski.arch.ui.navigation
+package pl.kacper.misterski.common.ui.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.EaseIn

@@ -33,5 +33,7 @@ android {
 }
 
 dependencies {
-
+    //Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
 }
