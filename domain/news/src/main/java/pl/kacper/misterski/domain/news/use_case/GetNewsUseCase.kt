@@ -4,8 +4,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import pl.kacper.misterski.common.result.Result
-import pl.kacper.misterski.common.result.getDataOrNull
+import pl.kacper.misterski.common.util.result.Result
+import pl.kacper.misterski.common.util.result.getDataOrNull
 import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.news.NewsRepository
 import java.time.OffsetDateTime

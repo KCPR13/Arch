@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import pl.kacper.misterski.feature.dog.ui.model.DogsUiModel
-import pl.kacper.misterski.core.ui.error.ErrorScreen
-import pl.kacper.misterski.core.ui.loading.LoadingScreen
+import pl.kacper.misterski.common.ui.error.ErrorScreen
+import pl.kacper.misterski.common.ui.loading.LoadingScreen
 import pl.kacper.misterski.dog.R
 
 
@@ -37,7 +37,11 @@ fun DogsScreen(modifier: Modifier, uiState: DogsUiState, onBackClick: () -> Unit
             message = uiState.error.message ?: "Unknown Error"
         )
 
-        is DogsUiState.Loading -> LoadingScreen(Modifier.size(60.dp))
+        is DogsUiState.Loading -> LoadingScreen(
+            Modifier.size(
+                60.dp
+            )
+        )
         is DogsUiState.Success -> DogsListScreen(
             modifier = modifier,
             models = uiState.list,

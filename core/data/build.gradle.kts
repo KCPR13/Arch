@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    api(project(":common"))
+    implementation(project(":common:util"))
 
     //Test
     testImplementation(libs.junit)

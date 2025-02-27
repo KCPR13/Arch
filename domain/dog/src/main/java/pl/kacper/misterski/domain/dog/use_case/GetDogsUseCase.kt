@@ -4,11 +4,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import pl.kacper.misterski.common.result.Result
-import pl.kacper.misterski.common.result.getDataOrNull
+import pl.kacper.misterski.common.util.result.Result
+import pl.kacper.misterski.common.util.result.getDataOrNull
 import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.dog.DogsRepository
 import java.time.OffsetDateTime
+
+//TODO K data source są w pakiecie data_source i tam pakiety remote local
+// TODO K opis architektury aplikacji
+//TODO K graph przepływu danych + graph architektury
+//TODO K  firebase analitics(osobny moduł)?
 
 class GetDogsUseCase(
     private val dogsRepository: DogsRepository,

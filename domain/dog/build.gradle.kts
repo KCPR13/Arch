@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":common:util"))
     implementation(project(":core:domain"))
 
     //Test

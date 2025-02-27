@@ -1,7 +1,6 @@
 package pl.kacper.misterski.core.domain.use_case
 
 import kotlinx.coroutines.flow.flow
-import pl.kacper.misterski.common.result.Result
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -17,12 +16,12 @@ class FormatDateUseCase {
 
        if(result.isSuccess){
            result.getOrNull()?.let { formattedDate ->
-               emit(Result.Success(formattedDate))
+               emit(pl.kacper.misterski.common.util.result.Result.Success(formattedDate))
            } ?: kotlin.run {
-               emit(Result.Failure(Exception("formatted date is null")))
+               emit(pl.kacper.misterski.common.util.result.Result.Failure(Exception("formatted date is null")))
            }
        }else {
-           emit(Result.Failure(result.exceptionOrNull() ?: Exception("format date exception")))
+           emit(pl.kacper.misterski.common.util.result.Result.Failure(result.exceptionOrNull() ?: Exception("format date exception")))
 
        }
     }

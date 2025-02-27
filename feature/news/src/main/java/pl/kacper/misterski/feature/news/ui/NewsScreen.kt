@@ -25,8 +25,8 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.kacper.misterski.feature.news.ui.model.NewsUiModel
-import pl.kacper.misterski.core.ui.error.ErrorScreen
-import pl.kacper.misterski.core.ui.loading.LoadingScreen
+import pl.kacper.misterski.common.ui.error.ErrorScreen
+import pl.kacper.misterski.common.ui.loading.LoadingScreen
 
 
 @OptIn(ExperimentalMaterial3Api::class)

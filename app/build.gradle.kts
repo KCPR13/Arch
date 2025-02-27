@@ -47,7 +47,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
+    implementation(project(":common:ui"))
     implementation(project(":feature:dog"))
     implementation(project(":feature:news"))
 

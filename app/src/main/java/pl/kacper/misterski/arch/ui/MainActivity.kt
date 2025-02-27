@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import pl.kacper.misterski.arch.ui.navigation.AppNavHost
-import pl.kacper.misterski.core.ui.theme.ArchTheme
+import pl.kacper.misterski.common.ui.theme.ArchTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
