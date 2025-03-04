@@ -43,6 +43,7 @@ dependencies {
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.mockk)
 
     //Hilt
     implementation(libs.hilt.android)

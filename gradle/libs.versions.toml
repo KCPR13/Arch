@@ -12,6 +12,7 @@ composeBom = "2025.02.00"
 ktor = "3.0.3"
 kspVersion = "2.1.0-1.0.29"
 kotlinCompilerExtensionVersion = "1.5.15"
+mockk = "1.13.12"
 roomRuntime = "2.6.1"
 navigation-compose = "2.8.7"
 navigation-compose-hilt = "1.2.0"
@@ -56,6 +57,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 
 [bundles]
