@@ -44,6 +44,9 @@ dependencies {
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
+    testImplementation(libs.mockk)
+    testImplementation(libs.ktor.client.mock)
+
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
