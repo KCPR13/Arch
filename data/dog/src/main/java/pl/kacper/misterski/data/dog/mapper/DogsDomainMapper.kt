@@ -1,7 +1,7 @@
-package pl.kacper.misterski.feature.data.dog.mapper
+package pl.kacper.misterski.data.dog.mapper
 
 import pl.kacper.misterski.domain.dog.model.DogsDomainModel
-import pl.kacper.misterski.feature.data.dog.model.remote.DogsResponseItem
+import pl.kacper.misterski.data.dog.model.remote.DogsResponseItem
 
 fun  List<DogsResponseItem>.mapToDogsDomainModels() = this.mapNotNull {
     it.breeds?.mapNotNull{ breed ->

@@ -1,4 +1,4 @@
-package pl.kacper.misterski.feature.data.dog.data_source.remote
+package pl.kacper.misterski.data.dog.data_source.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get

@@ -1,4 +1,4 @@
-package pl.kacper.misterski.feature.data.dog.model.remote
+package pl.kacper.misterski.data.dog.model.remote
 
 
 import kotlinx.serialization.SerialName

@@ -1,11 +1,11 @@
-package pl.kacper.misterski.feature.data.dog.di
+package pl.kacper.misterski.data.dog.di
 
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import pl.kacper.misterski.feature.data.dog.data_source.remote.DogsRemoteDataSource
-import pl.kacper.misterski.feature.data.dog.data_source.remote.DogsRemoteDataSourceImpl
+import pl.kacper.misterski.data.dog.data_source.remote.DogsRemoteDataSource
+import pl.kacper.misterski.data.dog.data_source.remote.DogsRemoteDataSourceImpl
 
 
 @Module
