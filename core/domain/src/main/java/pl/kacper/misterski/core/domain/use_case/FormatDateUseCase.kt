@@ -4,7 +4,6 @@ import kotlinx.coroutines.flow.flow
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
-// TODO K przykład use case używany w wielu feacherach
 class FormatDateUseCase {
 
     operator fun invoke(date: OffsetDateTime) = flow {

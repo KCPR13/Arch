@@ -8,7 +8,7 @@ import pl.kacper.misterski.common.util.result.Result
 import pl.kacper.misterski.data.news.data_source.remote.NewsRemoteDataSource
 import pl.kacper.misterski.data.news.mapper.mapToNewsDomainModels
 import pl.kacper.misterski.data.news.model.remote.NewsResponseItem
-import pl.kacper.misterski.domain.news.NewsRepository
+import pl.kacper.misterski.domain.news.repository.NewsRepository
 import pl.kacper.misterski.domain.news.model.NewsDomainModel
 import javax.inject.Inject
 

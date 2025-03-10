@@ -5,6 +5,10 @@ import pl.kacper.misterski.data.dog.model.remote.DogsResponseItem
 import pl.kacper.misterski.data.dog.model.remote.Height
 import pl.kacper.misterski.data.dog.model.remote.Weight
 
+//TODO K pakiety w feature:
+// kontekstowo jak dog i dog_details
+// podział na mapper, model, viewModel itp
+
 val height = Height("imperial", "metric")
 
 val weight = Weight("imperial", "metric")

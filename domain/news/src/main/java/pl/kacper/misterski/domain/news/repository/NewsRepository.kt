@@ -1,4 +1,4 @@
-package pl.kacper.misterski.domain.news
+package pl.kacper.misterski.domain.news.repository
 
 import pl.kacper.misterski.common.util.result.Result
 import pl.kacper.misterski.domain.news.model.NewsDomainModel

@@ -12,8 +12,9 @@ import org.junit.Test
 import pl.kacper.misterski.common.util.result.Result
 import pl.kacper.misterski.common.util.result.getDataOrNull
 import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
-import pl.kacper.misterski.domain.dog.FakeFailureDogsRepository
-import pl.kacper.misterski.domain.dog.FakeSuccessDogsRepository
+import pl.kacper.misterski.domain.dog.FakeFailureDogRepository
+import pl.kacper.misterski.domain.dog.FakeSuccessDogRepository
+import pl.kacper.misterski.domain.dog.model.Dog
 import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 import java.net.SocketException
 
@@ -21,8 +22,8 @@ import java.net.SocketException
 class GetDogsUseCaseTest {
 
     private lateinit var getDogsUseCase: GetDogsUseCase
-    private lateinit var fakeSuccessDogsRepository: FakeSuccessDogsRepository
-    private lateinit var fakeFailureDogsRepository: FakeFailureDogsRepository
+    private lateinit var fakeSuccessDogsRepository: FakeSuccessDogRepository
+    private lateinit var fakeFailureDogsRepository: FakeFailureDogRepository
 
     @MockK
     lateinit var formatDateUseCase: FormatDateUseCase
@@ -32,8 +33,8 @@ class GetDogsUseCaseTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        fakeSuccessDogsRepository = FakeSuccessDogsRepository()
-        fakeFailureDogsRepository = FakeFailureDogsRepository()
+        fakeSuccessDogsRepository = FakeSuccessDogRepository()
+        fakeFailureDogsRepository = FakeFailureDogRepository()
 
         every { formatDateUseCase.invoke(any()) } returns flow {
             emit(Result.Success(date))
@@ -44,13 +45,13 @@ class GetDogsUseCaseTest {
     fun `When GetDogsUseCase is called then it should return successful result with 5 DogsDomainModels`(): Unit = runBlocking {
         //GIVEN
         getDogsUseCase = GetDogsUseCase(
-            dogsRepository = fakeSuccessDogsRepository,
+            dogRepository = fakeSuccessDogsRepository,
             formatDateUseCase = formatDateUseCase
         )
         val mappedFirstItem = DogsDomainModel(
             id = "1",
             url = "https://pieski/jamiczek.com",
-            name = "1. 2025.03.04 Jamniczek",
+            name = "1. $date Jamniczek",
             height = "40",
             lifeSpan = "15",
             weight = "8kg"
@@ -61,7 +62,7 @@ class GetDogsUseCaseTest {
         val data = dogsResult.getDataOrNull()
 
         //THEN
-        assertTrue(dogsResult is Result.Success<List<DogsDomainModel>>)
+        assertTrue(dogsResult is Result.Success<List<Dog>>)
         assertEquals(5, data?.size ?: -1)
         assertEquals(mappedFirstItem, data?.firstOrNull())
     }
@@ -70,7 +71,7 @@ class GetDogsUseCaseTest {
     fun `When GetDogsUseCase is called then it should return failure result with SocketException`(): Unit = runBlocking {
        //GIVEN
         getDogsUseCase = GetDogsUseCase(
-            dogsRepository = fakeFailureDogsRepository,
+            dogRepository = fakeFailureDogsRepository,
             formatDateUseCase = formatDateUseCase
         )
 

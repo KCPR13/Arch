@@ -1,8 +1,13 @@
 package pl.kacper.misterski.domain.dog
 
 import pl.kacper.misterski.common.util.result.Result
+import pl.kacper.misterski.domain.dog.model.Dog
 import pl.kacper.misterski.domain.dog.model.DogsDomainModel
+import pl.kacper.misterski.domain.dog.repository.DogRepository
 import java.net.SocketException
+
+val dog: Dog = Dog("id", "url", "name", "height", "lifeSpan", "weight")
+
 
 val dogsDomainModel1 = DogsDomainModel(
     id = "1",
@@ -47,7 +52,7 @@ private val dogsDomainModel5 = DogsDomainModel(
 
 
 //TODO K failure repo or mockk to cover every case?
-class FakeSuccessDogsRepository : DogsRepository {
+class FakeSuccessDogRepository : DogRepository {
 
     override suspend fun fetchDogs(): Result<List<DogsDomainModel>> {
         return Result.Success(data = buildList {
@@ -60,7 +65,7 @@ class FakeSuccessDogsRepository : DogsRepository {
     }
 }
 
-class FakeFailureDogsRepository : DogsRepository {
+class FakeFailureDogRepository : DogRepository {
 
     override suspend fun fetchDogs(): Result<List<DogsDomainModel>> {
         return Result.Failure(SocketException())

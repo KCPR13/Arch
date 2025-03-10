@@ -4,7 +4,7 @@ import org.junit.Assert
 import org.junit.Test
 import pl.kacper.misterski.data.dog.dogsResponseItem
 
-class DogsDomainMapperTest {
+class DogsDataMapperTest {
 
     @Test
     fun `When breed is not null then mapToDogsDomainModels should return an item`() {
