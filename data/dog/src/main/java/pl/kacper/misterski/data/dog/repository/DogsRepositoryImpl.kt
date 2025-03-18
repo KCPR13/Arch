@@ -11,7 +11,6 @@ import pl.kacper.misterski.data.dog.mapper.mapToDogsDomainModels
 import pl.kacper.misterski.data.dog.model.remote.DogsResponseItem
 import javax.inject.Inject
 
-// TODO K @Inject constructor ok?
 class DogsRepositoryImpl @Inject constructor(
     private val dogsRemoteDataSource: DogsRemoteDataSource
 ) : DogRepository {

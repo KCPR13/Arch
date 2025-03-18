@@ -8,7 +8,6 @@ import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.news.repository.NewsRepository
 import pl.kacper.misterski.domain.news.use_case.GetNewsUseCase
 
-//TODO K GDZIE DI odpowiednich komponentów?
 @Module
 @InstallIn(ViewModelComponent::class)
 object NewsDomainModule {

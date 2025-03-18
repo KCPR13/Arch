@@ -46,8 +46,6 @@ android {
     }
 }
 
-//TODO K co jeśli location manager jest uzywany w kilku modułach
-// TODO K bannerManager przykład w common util
 dependencies {
     implementation(project(":common:ui"))
 

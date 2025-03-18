@@ -7,7 +7,6 @@ import dagger.hilt.components.SingletonComponent
 import pl.kacper.misterski.domain.dog.repository.DogRepository
 import pl.kacper.misterski.data.dog.repository.DogsRepositoryImpl
 
-//TODO K wstrzykiwanie zależności, gdzie co i jak
 @Module
 @InstallIn(SingletonComponent::class)
 interface DogsRepositoryModule {

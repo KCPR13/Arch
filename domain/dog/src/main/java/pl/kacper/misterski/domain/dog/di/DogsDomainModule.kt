@@ -8,7 +8,6 @@ import pl.kacper.misterski.core.domain.use_case.FormatDateUseCase
 import pl.kacper.misterski.domain.dog.use_case.GetDogsUseCase
 import pl.kacper.misterski.domain.dog.repository.DogRepository
 
-//TODO K kiedy jakie kompoenenty
 @Module
 @InstallIn(ViewModelComponent::class)
 object DogsDomainModule {

@@ -6,6 +6,7 @@ import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 import pl.kacper.misterski.domain.dog.repository.DogRepository
 import java.net.SocketException
 
+//TODO K bazka jako osobny moduł
 val dog: Dog = Dog("id", "url", "name", "height", "lifeSpan", "weight")
 
 
@@ -51,7 +52,6 @@ private val dogsDomainModel5 = DogsDomainModel(
 )
 
 
-//TODO K failure repo or mockk to cover every case?
 class FakeSuccessDogRepository : DogRepository {
 
     override suspend fun fetchDogs(): Result<List<DogsDomainModel>> {

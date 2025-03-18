@@ -15,7 +15,6 @@ import org.junit.Test
 // TODO K liczba pojedyncza
 //TODO K nazwy pakietów z podłogą
 
-//TODO K why 0% coverage
 class DogsRemoteDataSourceImplTest {
 
     private lateinit var httpClient: HttpClient

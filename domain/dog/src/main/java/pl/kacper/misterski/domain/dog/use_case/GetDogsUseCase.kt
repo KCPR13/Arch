@@ -13,7 +13,6 @@ import java.time.OffsetDateTime
 
 // TODO K opis architektury aplikacji
 //TODO K graph przepływu danych + graph architektury
-//TODO K  firebase analitics(osobny moduł)?
 
 class GetDogsUseCase(
     private val dogRepository: DogRepository,
