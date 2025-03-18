@@ -1,4 +1,4 @@
-package pl.kacper.misterski.core.data.database.dog
+package pl.kacper.misterski.core.database.dog
 
 import androidx.room.Dao
 import androidx.room.Insert

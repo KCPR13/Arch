@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.kacper.misterski.data"
+    namespace = "pl.kacper.misterski.core.databse"
     compileSdk = 35
 
     defaultConfig {
@@ -36,16 +36,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:util"))
-
-    //Test
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.ktx)
-
-    //KTOR
-    api(libs.bundles.ktor.client)
 
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    //Room
+    api(libs.androidx.room.runtime)
+    api(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }

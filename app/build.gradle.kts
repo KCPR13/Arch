@@ -48,6 +48,7 @@ android {
 
 dependencies {
     implementation(project(":common:ui"))
+    implementation(project(":core:database"))
 
     implementation(project(":data:dog"))
     implementation(project(":domain:dog"))

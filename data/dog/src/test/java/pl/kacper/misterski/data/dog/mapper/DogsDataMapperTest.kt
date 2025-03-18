@@ -12,15 +12,21 @@ class DogsDataMapperTest {
         val list = listOf(dogsResponseItem)
 
         //WHEN
-        val result = list.mapToDogsDomainModels()
+        val result = list.mapResponseItemsToDogsDomainModels()
         val firstItem = result.first()
 
         Assert.assertEquals(1, result.size)
         Assert.assertEquals(dogsResponseItem.id, firstItem.id)
         Assert.assertEquals(dogsResponseItem.url, firstItem.url)
         Assert.assertEquals(dogsResponseItem.breeds?.firstOrNull()?.name, firstItem.name)
-        Assert.assertEquals(dogsResponseItem.breeds?.firstOrNull()?.height?.metric, firstItem.height)
-        Assert.assertEquals(dogsResponseItem.breeds?.firstOrNull()?.weight?.metric, firstItem.weight)
+        Assert.assertEquals(
+            dogsResponseItem.breeds?.firstOrNull()?.height?.metric,
+            firstItem.height
+        )
+        Assert.assertEquals(
+            dogsResponseItem.breeds?.firstOrNull()?.weight?.metric,
+            firstItem.weight
+        )
         Assert.assertEquals(dogsResponseItem.breeds?.firstOrNull()?.lifeSpan, firstItem.lifeSpan)
     }
 
@@ -30,7 +36,7 @@ class DogsDataMapperTest {
         val list = listOf(dogsResponseItem.copy(breeds = null))
 
         //WHEN
-        val result = list.mapToDogsDomainModels()
+        val result = list.mapResponseItemsToDogsDomainModels()
 
         Assert.assertEquals(0, result.size)
     }

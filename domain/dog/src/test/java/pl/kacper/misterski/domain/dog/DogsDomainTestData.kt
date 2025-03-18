@@ -6,7 +6,6 @@ import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 import pl.kacper.misterski.domain.dog.repository.DogRepository
 import java.net.SocketException
 
-//TODO K bazka jako osobny moduł
 val dog: Dog = Dog("id", "url", "name", "height", "lifeSpan", "weight")
 
 
