@@ -41,13 +41,13 @@ class GetDogsUseCaseTest {
     }
 
     @Test
-    fun `When GetDogsUseCase is called then it should return successful result with 5 DogsDomainModels`(): Unit = runBlocking {
+    fun `When GetDogsUseCase is called then it should return successful result with 5 Dogs models`(): Unit = runBlocking {
         //GIVEN
         getDogsUseCase = GetDogsUseCase(
             dogRepository = fakeSuccessDogsRepository,
             formatDateUseCase = formatDateUseCase
         )
-        val mappedFirstItem = DogsDomainModel(
+        val mappedFirstItem = Dog(
             id = "1",
             url = "https://pieski/jamiczek.com",
             name = "1. $date Jamniczek",
