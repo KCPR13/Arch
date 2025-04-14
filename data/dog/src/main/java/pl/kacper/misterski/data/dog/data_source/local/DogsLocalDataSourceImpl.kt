@@ -6,7 +6,7 @@ import pl.kacper.misterski.core.database.dog.DogDao
 import pl.kacper.misterski.core.database.dog.DogEntity
 import javax.inject.Inject
 
-class DogsLocalDataSourceImpl @Inject constructor(private val dogDao: DogDao) :
+internal class DogsLocalDataSourceImpl @Inject constructor(private val dogDao: DogDao) :
     DogsLocalDataSource {
     override suspend fun saveDogs(dogs: List<DogEntity>) = withContext(Dispatchers.IO) {
         dogDao.insert(*dogs.toTypedArray())

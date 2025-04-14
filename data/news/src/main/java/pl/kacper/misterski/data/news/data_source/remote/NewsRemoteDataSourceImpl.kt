@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
-class NewsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) :
+internal class NewsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) :
     NewsRemoteDataSource {
 
     override suspend fun fetchNews() = withContext(Dispatchers.IO) {

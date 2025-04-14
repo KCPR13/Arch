@@ -9,7 +9,7 @@ import pl.kacper.misterski.data.news.data_source.remote.NewsRemoteDataSourceImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface NewsDataSourceModule {
+internal interface NewsDataSourceModule {
 
     @Binds
     fun provideNewsRemoteDataSource(newsRemoteDataSource: NewsRemoteDataSourceImpl)

@@ -31,7 +31,7 @@ import pl.kacper.misterski.common.ui.loading.LoadingScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsScreen(
+internal fun NewsScreen(
     modifier: Modifier,
     uiState: NewsUiState,
     onBackClick: () -> Unit,

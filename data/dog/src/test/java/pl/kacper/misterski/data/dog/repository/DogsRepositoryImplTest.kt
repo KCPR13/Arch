@@ -12,6 +12,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import pl.kacper.misterski.common.util.result.Result
+import pl.kacper.misterski.data.dog.data_source.local.DogsLocalDataSource
 import pl.kacper.misterski.data.dog.data_source.remote.DogsRemoteDataSource
 import pl.kacper.misterski.data.dog.model.remote.DogsResponseItem
 
@@ -20,6 +21,9 @@ class DogsRepositoryImplTest {
     @MockK
     private lateinit var dogsRemoteDataSource: DogsRemoteDataSource
 
+    @MockK
+    private lateinit var dogsLocalDataSource: DogsLocalDataSource
+
     private val httpResponse = mockk<HttpResponse>(relaxed = true)
 
     private lateinit var repository: DogsRepositoryImpl
@@ -27,7 +31,7 @@ class DogsRepositoryImplTest {
     @Before
     fun setup() {
         MockKAnnotations.init(this)
-        repository = DogsRepositoryImpl(dogsRemoteDataSource)
+        repository = DogsRepositoryImpl(dogsRemoteDataSource,dogsLocalDataSource)
     }
 
     @Test
@@ -36,6 +40,8 @@ class DogsRepositoryImplTest {
         coEvery { dogsRemoteDataSource.fetchDogs() } returns httpResponse
         coEvery { httpResponse.status } returns HttpStatusCode.OK
         coEvery { httpResponse.body<ArrayList<DogsResponseItem>>() } returns arrayListOf()
+        coEvery { dogsLocalDataSource.getDogs() } returns arrayListOf()
+        coEvery { dogsLocalDataSource.saveDogs(any()) } returns Unit
 
 
         //WHEN

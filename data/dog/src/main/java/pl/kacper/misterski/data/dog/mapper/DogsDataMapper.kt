@@ -4,7 +4,7 @@ import pl.kacper.misterski.core.database.dog.DogEntity
 import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 import pl.kacper.misterski.data.dog.model.remote.DogsResponseItem
 
-fun  List<DogsResponseItem>.mapResponseItemsToDogsDomainModels() = this.mapNotNull {
+internal fun  List<DogsResponseItem>.mapResponseItemsToDogsDomainModels() = this.mapNotNull {
     it.breeds?.mapNotNull{ breed ->
         DogsDomainModel(
             id = it.id.orEmpty(),
@@ -17,7 +17,7 @@ fun  List<DogsResponseItem>.mapResponseItemsToDogsDomainModels() = this.mapNotNu
     }
 }.flatten()
 
-fun List<DogsDomainModel>.mapDomainToEntities() = this.map { domainModel ->
+internal fun List<DogsDomainModel>.mapDomainToEntities() = this.map { domainModel ->
     DogEntity(
         id = domainModel.id,
         name = domainModel.name,
@@ -26,7 +26,7 @@ fun List<DogsDomainModel>.mapDomainToEntities() = this.map { domainModel ->
     )
 }
 
-fun List<DogEntity>.mapEntitiesToDogsDomainModels() = this.map { entity ->
+internal fun List<DogEntity>.mapEntitiesToDogsDomainModels() = this.map { entity ->
     DogsDomainModel(
         id = entity.id,
         url = entity.url,

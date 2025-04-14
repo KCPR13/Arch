@@ -17,17 +17,12 @@ package pl.kacper.misterski.arch.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import pl.kacper.misterski.arch.ui.start.StartScreen
-import pl.kacper.misterski.arch.ui.start.StartViewModel
+import pl.kacper.misterski.arch.ui.start.start
 import pl.kacper.misterski.common.ui.navigation.NavigationItem
-import pl.kacper.misterski.common.ui.navigation.animatedDestination
 import pl.kacper.misterski.feature.dog.ui.dogs
-import pl.kacper.misterski.feature.news.ui.NewsScreen
-import pl.kacper.misterski.feature.news.ui.NewsViewModel
+import pl.kacper.misterski.feature.news.ui.news
 
 @Composable
 fun AppNavHost(
@@ -39,38 +34,27 @@ fun AppNavHost(
         navController = navController,
         startDestination = NavigationItem.Start.route,
     ) {
-        animatedDestination(NavigationItem.Start.route) {
-            val viewModel: StartViewModel = hiltViewModel()
+        start(
+            modifier = modifier,
+            onDogsSelected = {
+                navController.navigate(NavigationItem.Dog.route)
+            },
+            onNewsSelected = {
+                navController.navigate(NavigationItem.News.route)
+            }
+        )
 
-            StartScreen(
-                modifier = modifier,
-                onDogsSelected = {
-                    navController.navigate(NavigationItem.Dog.route)
-                },
-                onNewsSelected = {
-                    navController.navigate(NavigationItem.News.route)
-                },
-                locationStatusUiModel = viewModel.locationStatus
-            )
-        }
 
-        dogs(modifier = modifier,
+        dogs(
+            modifier = modifier,
             onBackClick = {
                 navController.navigateUp()
             })
 
-        animatedDestination(NavigationItem.News.route) {
-            val viewModel: NewsViewModel = hiltViewModel()
-            val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
-
-            NewsScreen(
-                modifier = modifier,
-                uiState = uiState,
-                onBackClick = {
-                    navController.navigateUp()
-                },
-                onRefresh = { viewModel.fetchData() }
-            )
-        }
+        news(
+            modifier = modifier,
+            onBackClick = {
+                navController.navigateUp()
+            })
     }
 }

@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NewsResponseItem(
+internal data class NewsResponseItem(
     @SerialName("body")
     val body: String?,
     @SerialName("id")

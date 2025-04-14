@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 private const val API_KEY = "live_DDLKKfmfq5oVnxUPaBViYBTJ11bU6pcCC8EhFNV1R4uFCTTiMQcsNiSWyrCZA5fQ"
 
-class DogsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) :
+internal class DogsRemoteDataSourceImpl @Inject constructor(private val httpClient: HttpClient) :
     DogsRemoteDataSource {
 
     override suspend fun fetchDogs() = withContext(Dispatchers.IO) {

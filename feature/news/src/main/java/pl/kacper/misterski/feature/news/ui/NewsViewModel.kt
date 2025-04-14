@@ -18,7 +18,7 @@ import pl.kacper.misterski.feature.news.ui.mapper.mapToNewsUiModels
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) : ViewModel() {
+internal class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) : ViewModel() {
 
     private val _uiState = MutableStateFlow<NewsUiState>(NewsUiState.Loading)
     val uiState = _uiState

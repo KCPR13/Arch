@@ -3,7 +3,7 @@ package pl.kacper.misterski.data.news.mapper
 import pl.kacper.misterski.data.news.model.remote.NewsResponseItem
 import pl.kacper.misterski.domain.news.model.NewsDomainModel
 
-fun List<NewsResponseItem>.mapToNewsDomainModels() = this.mapNotNull { responseItem ->
+internal fun List<NewsResponseItem>.mapToNewsDomainModels() = this.mapNotNull { responseItem ->
     responseItem.id?.let { id ->
         NewsDomainModel(
             id = id,

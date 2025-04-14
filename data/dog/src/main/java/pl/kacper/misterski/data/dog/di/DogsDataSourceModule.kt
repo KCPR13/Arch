@@ -12,7 +12,7 @@ import pl.kacper.misterski.data.dog.data_source.remote.DogsRemoteDataSourceImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DogsDataSourceModule {
+internal interface DogsDataSourceModule {
 
     @Binds
     fun bindDogsRemoteDataSource(

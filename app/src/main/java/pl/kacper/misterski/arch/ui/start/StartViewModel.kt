@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class StartViewModel @Inject constructor(appLocationManager: AppLocationManagerImpl) : ViewModel() {
+internal class StartViewModel @Inject constructor(appLocationManager: AppLocationManagerImpl) : ViewModel() {
 
     val locationStatus = if (appLocationManager.isLocationEnabled()) {
         LocationStatusUiModel("Location enabled", Icons.Default.LocationOn)

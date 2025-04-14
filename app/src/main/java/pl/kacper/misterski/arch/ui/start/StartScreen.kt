@@ -25,10 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.kacper.misterski.arch.ui.start.model.LocationStatusUiModel
-import pl.kacper.misterski.dog.R
 
 @Composable
-fun StartScreen(
+internal fun StartScreen(
     modifier: Modifier = Modifier,
     onDogsSelected: () -> Unit,
     onNewsSelected: () -> Unit,

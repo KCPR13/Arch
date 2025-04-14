@@ -30,7 +30,7 @@ import pl.kacper.misterski.dog.R
 
 
 @Composable
-fun DogsScreen(modifier: Modifier, uiState: DogsUiState, onBackClick: () -> Unit) {
+internal fun DogsScreen(modifier: Modifier, uiState: DogsUiState, onBackClick: () -> Unit) {
 
     when (uiState) {
         is DogsUiState.Failure -> ErrorScreen(

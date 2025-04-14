@@ -9,7 +9,7 @@ import pl.kacper.misterski.data.dog.repository.DogsRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DogsRepositoryModule {
+internal interface DogsRepositoryModule {
 
     @Binds
     fun bindDogsRepository(

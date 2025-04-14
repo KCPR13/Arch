@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DogsResponseItem(
+internal data class DogsResponseItem(
     @SerialName("breeds")
     val breeds: List<Breed?>?,
     @SerialName("height")

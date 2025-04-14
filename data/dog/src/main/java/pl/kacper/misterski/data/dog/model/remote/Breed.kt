@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Breed(
+internal data class Breed(
     @SerialName("height")
     val height: Height?,
     @SerialName("id")

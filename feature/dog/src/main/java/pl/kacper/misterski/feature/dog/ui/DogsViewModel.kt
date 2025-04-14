@@ -12,7 +12,7 @@ import pl.kacper.misterski.feature.dog.ui.mapper.mapToDogsUiModels
 import javax.inject.Inject
 
 @HiltViewModel
-class DogsViewModel @Inject constructor(getDogsUseCase: GetDogsUseCase) : ViewModel() {
+internal class DogsViewModel @Inject constructor(getDogsUseCase: GetDogsUseCase) : ViewModel() {
 
     val uiState = getDogsUseCase.invoke().map { result ->
         when (result) {
