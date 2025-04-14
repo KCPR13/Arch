@@ -18,7 +18,6 @@ import pl.kacper.misterski.domain.dog.model.Dog
 import pl.kacper.misterski.domain.dog.model.DogsDomainModel
 import java.net.SocketException
 
-//TODO K fejkowe repozytoria czy w przypadku success / fail mockujemy wszystko?
 class GetDogsUseCaseTest {
 
     private lateinit var getDogsUseCase: GetDogsUseCase

@@ -11,9 +11,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-// TODO K nazwy pakietów
-// TODO K liczba pojedyncza
-//TODO K nazwy pakietów z podłogą
 
 class DogsRemoteDataSourceImplTest {
 

@@ -11,9 +11,6 @@ import pl.kacper.misterski.domain.dog.mapper.mapToDogs
 import pl.kacper.misterski.domain.dog.repository.DogRepository
 import java.time.OffsetDateTime
 
-// TODO K opis architektury aplikacji
-//TODO K graph przepływu danych + graph architektury
-
 class GetDogsUseCase(
     private val dogRepository: DogRepository,
     private val formatDateUseCase: FormatDateUseCase
