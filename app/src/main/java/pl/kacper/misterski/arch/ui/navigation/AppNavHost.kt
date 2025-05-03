@@ -23,6 +23,7 @@ import pl.kacper.misterski.arch.ui.start.start
 import pl.kacper.misterski.common.ui.navigation.NavigationItem
 import pl.kacper.misterski.feature.dog.ui.dogs
 import pl.kacper.misterski.feature.news.ui.news
+import pl.kacper.misterski.feature.onboarding.ui.onboarding
 
 @Composable
 fun AppNavHost(
@@ -41,9 +42,11 @@ fun AppNavHost(
             },
             onNewsSelected = {
                 navController.navigate(NavigationItem.News.route)
+            },
+            onOnboardingSelected = {
+                navController.navigate(NavigationItem.Onboarding.route)
             }
         )
-
 
         dogs(
             modifier = modifier,
@@ -52,6 +55,12 @@ fun AppNavHost(
             })
 
         news(
+            modifier = modifier,
+            onBackClick = {
+                navController.navigateUp()
+            })
+
+        onboarding(
             modifier = modifier,
             onBackClick = {
                 navController.navigateUp()

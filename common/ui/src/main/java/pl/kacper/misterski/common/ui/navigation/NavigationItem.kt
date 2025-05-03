@@ -24,4 +24,6 @@ sealed class NavigationItem(
 
     data object News : NavigationItem(Screen.NEWS.name)
 
+    data object Onboarding : NavigationItem(Screen.ONBOARDING.name)
+
 }

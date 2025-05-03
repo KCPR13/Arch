@@ -7,8 +7,10 @@ import pl.kacper.misterski.common.ui.navigation.NavigationItem
 import pl.kacper.misterski.common.ui.navigation.animatedDestination
 
 fun NavGraphBuilder.start(
-    modifier: Modifier, onDogsSelected: () -> Unit,
-    onNewsSelected: () -> Unit
+    modifier: Modifier,
+    onDogsSelected: () -> Unit,
+    onNewsSelected: () -> Unit,
+    onOnboardingSelected: () -> Unit,
 ) {
     animatedDestination(NavigationItem.Start.route) {
         val viewModel: StartViewModel = hiltViewModel()
@@ -17,6 +19,7 @@ fun NavGraphBuilder.start(
             modifier = modifier,
             onDogsSelected = onDogsSelected,
             onNewsSelected = onNewsSelected,
+            onOnboardingSelected = onOnboardingSelected,
             locationStatusUiModel = viewModel.locationStatus
         )
     }

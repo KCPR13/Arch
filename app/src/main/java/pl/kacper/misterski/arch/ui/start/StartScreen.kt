@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pl.kacper.misterski.arch.R
 import pl.kacper.misterski.arch.ui.start.model.LocationStatusUiModel
 
 @Composable
@@ -31,6 +32,7 @@ internal fun StartScreen(
     modifier: Modifier = Modifier,
     onDogsSelected: () -> Unit,
     onNewsSelected: () -> Unit,
+    onOnboardingSelected: () -> Unit,
     locationStatusUiModel: LocationStatusUiModel
 ) {
     Column(modifier) {
@@ -38,8 +40,10 @@ internal fun StartScreen(
         LocationStatus(locationStatusUiModel)
         Spacer(Modifier.fillMaxWidth())
 
-        Button(modifier = Modifier.padding(16.dp),
-            onClick = { onDogsSelected.invoke() }) {
+        Button(
+            modifier = Modifier.padding(16.dp),
+            onClick = onDogsSelected
+        ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(pl.kacper.misterski.arch.R.string.dogs_title),
@@ -47,11 +51,23 @@ internal fun StartScreen(
             )
         }
         Spacer(Modifier.fillMaxWidth())
-        Button(modifier = Modifier.padding(16.dp),
-            onClick = { onNewsSelected.invoke() }) {
+        Button(
+            modifier = Modifier.padding(16.dp),
+            onClick = onNewsSelected
+        ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(pl.kacper.misterski.arch.R.string.news_title),
+                textAlign = TextAlign.Center
+            )
+        }
+        Spacer(Modifier.fillMaxWidth())
+        Button(
+            modifier = Modifier.padding(16.dp),
+            onClick = onOnboardingSelected) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(R.string.onboarding),
                 textAlign = TextAlign.Center
             )
         }
@@ -86,6 +102,7 @@ private fun StartScreenPreview() {
     StartScreen(
         onDogsSelected = {},
         onNewsSelected = {},
+        onOnboardingSelected = {},
         locationStatusUiModel = LocationStatusUiModel("Title", Icons.Default.LocationOn)
     )
 }

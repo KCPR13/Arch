@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.android.ksp)
     alias(libs.plugins.hilt.plugin)
@@ -8,17 +8,14 @@ plugins {
 }
 
 android {
-    namespace = "pl.kacper.misterski.arch"
+    namespace = "pl.kacper.misterski.feature.onboarding"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "pl.kacper.misterski.arch"
         minSdk = 30
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -37,37 +34,15 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
-    }
 }
 
 dependencies {
     implementation(project(":common:ui"))
-    implementation(project(":core:database"))
-
-    implementation(project(":data:dog"))
-    implementation(project(":domain:dog"))
-    implementation(project(":feature:dog"))
-
-
-    implementation(project(":data:news"))
-    implementation(project(":domain:news"))
-    implementation(project(":feature:news"))
-
-
-    implementation(project(":feature:onboarding"))
-
-    //Test
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.ktx)
-
+    implementation(project(":common:util"))
 
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+
 }

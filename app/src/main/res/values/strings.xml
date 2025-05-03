@@ -2,4 +2,5 @@
     <string name="app_name">arch</string>
     <string name="news_title">News</string>
     <string name="dogs_title">Dogs</string>
+    <string name="onboarding">Onboarding</string>
 </resources>
