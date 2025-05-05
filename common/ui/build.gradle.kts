@@ -52,4 +52,6 @@ dependencies {
     api(libs.androidx.compose.navigation)
     api(libs.androidx.compose.hiltNavigation)
 
+    api(libs.androidx.material.icons.extended)
+
 }

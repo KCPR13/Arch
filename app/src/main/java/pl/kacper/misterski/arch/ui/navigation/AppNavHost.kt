@@ -23,7 +23,7 @@ import pl.kacper.misterski.arch.ui.start.start
 import pl.kacper.misterski.common.ui.navigation.NavigationItem
 import pl.kacper.misterski.feature.dog.ui.dogs
 import pl.kacper.misterski.feature.news.ui.news
-import pl.kacper.misterski.feature.onboarding.ui.onboarding
+import pl.kacper.misterski.feature.onboarding.ui.navigation.onboarding
 
 @Composable
 fun AppNavHost(
@@ -64,6 +64,13 @@ fun AppNavHost(
             modifier = modifier,
             onBackClick = {
                 navController.navigateUp()
+            },
+            onOnboardingCompleted = {
+                navController.navigate(NavigationItem.Start.route) {
+                    popUpTo(NavigationItem.Start.route) {
+                        inclusive = true
+                    }
+                }
             })
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proceed">Continue</string>
+    <string name="enter_email">Enter your email to get started</string>
+    <string name="email_error_message">Please enter a valid email address.</string>
+    <string name="back">back</string>
+    <string name="onboarding_step">%1$s/5</string>
+    <string name="enter_full_name">Enter full name</string>
+    <string name="full_name">Full name</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="select_your_profile_picture">Select your profile picture</string>
+    <string name="pick_a_photo">Pick a Photo</string>
+    <string name="no_photo">No Photo</string>
+    <string name="summary">Summary</string>
+    <string name="email">Email:</string>
+    <string name="full_name_label">Full Name:</string>
+    <string name="phone_number">Phone Number:</string>
+</resources>
