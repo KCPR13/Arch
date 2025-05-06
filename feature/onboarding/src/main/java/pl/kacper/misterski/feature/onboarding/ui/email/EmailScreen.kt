@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import pl.kacper.misterski.feature.onboarding.R
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
 import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
 
 
@@ -28,7 +29,7 @@ import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
 fun EmailScreen(
     modifier: Modifier,
     onContinueClicked: () -> Unit,
-    onEmailChanged: (String) -> Unit,
+    onEmailChanged: (OnboardingAction) -> Unit,
     uiState: EmailUiModel
 ) {
     val focusRequester = remember { FocusRequester() }
@@ -54,7 +55,9 @@ fun EmailScreen(
                 .fillMaxWidth()
                 .focusRequester(focusRequester),
             value = uiState.email,
-            onValueChange = onEmailChanged
+            onValueChange = { newEmail ->
+                onEmailChanged(OnboardingAction.EmailUpdate(newEmail))
+            }
         )
 
         if (uiState.showError) {

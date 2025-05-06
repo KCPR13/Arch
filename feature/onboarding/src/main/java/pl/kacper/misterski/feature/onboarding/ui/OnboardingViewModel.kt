@@ -16,59 +16,75 @@ import javax.inject.Inject
 @HiltViewModel
 class OnboardingViewModel @Inject constructor() : ViewModel() {
 
-    private val _emailUiState = MutableStateFlow(EmailUiModel())
-    val emailUiState = _emailUiState.asStateFlow()
-
-    private val _phoneUiState = MutableStateFlow(PhoneUiModel())
-    val phoneUiState = _phoneUiState.asStateFlow()
-
-    private val _fullNameUiState = MutableStateFlow(FullNameUiModel())
-    val fullNameUiState = _fullNameUiState.asStateFlow()
-
-    private val _photoUiState = MutableStateFlow(PhotoUiModel())
-    val photoUiState = _photoUiState.asStateFlow()
-
-    private val _currentStep = MutableStateFlow(1)
-    val currentStep = _currentStep.asStateFlow()
+    private val _uiState = MutableStateFlow(OnboardingUiState())
+    val uiState = _uiState.asStateFlow()
 
 
-    fun updateEmail(email: String) {
-        _emailUiState.update {
+    fun onAction(action: OnboardingAction) {
+        when (action) {
+            is OnboardingAction.DropCurrentStep -> dropCurrentStep()
+            is OnboardingAction.EmailUpdate -> updateEmail(email = action.email)
+            is OnboardingAction.FullNameUpdate -> updateFullName(fullName = action.fullName)
+            is OnboardingAction.PhoneUpdate -> updatePhone(phone = action.phone)
+            is OnboardingAction.PhotoUpdate -> updatePhotoUri(uri = action.uri)
+            is OnboardingAction.StepUpdate -> updateCurrentStep(step = action.step)
+        }
+    }
+
+
+    private fun updateEmail(email: String) {
+        _uiState.update {
             val emailValid =
                 email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-            EmailUiModel(
-                email = email,
-                showError = !emailValid,
-                enableContinueButton = emailValid
+            it.copy(
+                emailUiModel = EmailUiModel(
+                    email = email,
+                    showError = !emailValid,
+                    enableContinueButton = emailValid
+                )
             )
         }
     }
 
-    fun updatePhone(phone: String) {
-        _phoneUiState.update {
-            PhoneUiModel(phoneNumber = phone, continueButtonEnabled = phone.isNotEmpty())
+    private fun updatePhone(phone: String) {
+        _uiState.update {
+            it.copy(
+                phoneUiModel = PhoneUiModel(
+                    phoneNumber = phone,
+                    continueButtonEnabled = phone.isNotEmpty()
+                )
+            )
         }
     }
 
-    fun updateFullName(fullName: String) {
-        _fullNameUiState.update {
-            FullNameUiModel(fullName = fullName, enableContinueButton = fullName.isNotEmpty())
+    private fun updateFullName(fullName: String) {
+        _uiState.update {
+            it.copy(
+                fullNameUiModel = FullNameUiModel(
+                    fullName = fullName,
+                    enableContinueButton = fullName.isNotEmpty()
+                )
+            )
         }
     }
 
-    fun updatePhotoUri(uri: Uri?) {
-        _photoUiState.update {
-            PhotoUiModel(uri = uri, continueButtonEnabled = uri != null)
+    private fun updatePhotoUri(uri: Uri?) {
+        _uiState.update {
+            it.copy(photoUiModel = PhotoUiModel(uri = uri, continueButtonEnabled = uri != null))
         }
     }
 
-    fun updateCurrentStep(step: Int) {
-        _currentStep.update { step }
+    private fun updateCurrentStep(step: OnboardingStep) {
+        _uiState.update {
+            it.copy(currentStep = step)
+        }
     }
 
-    fun dropCurrentStep() {
-        _currentStep.update {
-            it.minus(1)
+    private fun dropCurrentStep() {
+        _uiState.update {
+            val newStepPosition = it.currentStep.position - 1
+            val newStep = OnboardingStep.entries.find { step -> step.position == newStepPosition }
+            it.copy(currentStep = newStep ?: it.currentStep)
         }
     }
 }

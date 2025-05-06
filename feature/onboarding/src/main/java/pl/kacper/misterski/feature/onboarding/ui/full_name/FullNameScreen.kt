@@ -21,13 +21,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import pl.kacper.misterski.feature.onboarding.R
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
 import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
 
 @Composable
 fun FullNameScreen(
     modifier: Modifier,
     uiState: FullNameUiModel,
-    onFullNameChanged: (String) -> Unit,
+    onFullNameChanged: (OnboardingAction) -> Unit,
     onContinueClicked: () -> Unit
 ) {
 
@@ -53,7 +54,9 @@ fun FullNameScreen(
 
         OutlinedTextField(
             value = uiState.fullName,
-            onValueChange = onFullNameChanged,
+            onValueChange = { newFullName ->
+                onFullNameChanged(OnboardingAction.FullNameUpdate(newFullName))
+            },
             label = { Text(stringResource(R.string.full_name)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier

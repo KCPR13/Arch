@@ -14,6 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import pl.kacper.misterski.common.ui.navigation.animatedDestination
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingStep
 import pl.kacper.misterski.feature.onboarding.ui.OnboardingViewModel
 import pl.kacper.misterski.feature.onboarding.ui.common.TopBar
 import pl.kacper.misterski.feature.onboarding.ui.email.EmailScreen
@@ -31,26 +33,21 @@ fun NavGraphBuilder.onboarding(
         val navController = rememberNavController()
         val viewModel: OnboardingViewModel = hiltViewModel()
 
-        val emailUiState by viewModel.emailUiState.collectAsStateWithLifecycle()
-        val phoneUiState by viewModel.phoneUiState.collectAsStateWithLifecycle()
-        val fullNameUiState by viewModel.fullNameUiState.collectAsStateWithLifecycle()
-        val photoUiState by viewModel.photoUiState.collectAsStateWithLifecycle()
-        val currentStep by viewModel.currentStep.collectAsStateWithLifecycle()
-
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
         Scaffold(
             modifier = modifier,
             topBar = {
                 TopBar(
-                    step = currentStep.toString(),
+                    step = uiState.currentStep.position.toString(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     onBackClick = {
-                        if (currentStep > 1){
+                        if (uiState.currentStep.position > 1) {
                             navController.popBackStack()
-                            viewModel.dropCurrentStep()
-                        } else{
+                            viewModel.onAction(OnboardingAction.DropCurrentStep)
+                        } else {
                             onBackClick.invoke()
                         }
                     }
@@ -68,10 +65,10 @@ fun NavGraphBuilder.onboarding(
                             .fillMaxSize()
                             .padding(16.dp),
                         onContinueClicked = {
-                            viewModel.updateCurrentStep(2)
+                            viewModel.onAction(OnboardingAction.StepUpdate(OnboardingStep.FULL_NAME))
                             navController.navigate(NavigationItem.FullName.route)
-                        }, onEmailChanged = { viewModel.updateEmail(it) },
-                        uiState = emailUiState
+                        }, onEmailChanged = viewModel::onAction,
+                        uiState = uiState.emailUiModel
                     )
                 }
 
@@ -80,12 +77,10 @@ fun NavGraphBuilder.onboarding(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(16.dp),
-                        uiState = fullNameUiState,
-                        onFullNameChanged = { newFullName ->
-                            viewModel.updateFullName(newFullName)
-                        },
+                        uiState = uiState.fullNameUiModel,
+                        onFullNameChanged = viewModel::onAction,
                         onContinueClicked = {
-                            viewModel.updateCurrentStep(3)
+                            viewModel.onAction(OnboardingAction.StepUpdate(OnboardingStep.PHONE))
                             navController.navigate(NavigationItem.Phone.route)
                         }
                     )
@@ -96,12 +91,10 @@ fun NavGraphBuilder.onboarding(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(16.dp),
-                        uiState = phoneUiState,
-                        onPhoneNumberChanged = { newPhoneNumber ->
-                            viewModel.updatePhone(newPhoneNumber)
-                        },
+                        uiState = uiState.phoneUiModel,
+                        onPhoneNumberChanged = viewModel::onAction,
                         onContinueClicked = {
-                            viewModel.updateCurrentStep(4)
+                            viewModel.onAction(OnboardingAction.StepUpdate(OnboardingStep.PHOTO))
                             navController.navigate(NavigationItem.Photo.route)
                         }
                     )
@@ -112,23 +105,21 @@ fun NavGraphBuilder.onboarding(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(16.dp),
-                        onPhotoSelected = { newAvatarUri ->
-                            viewModel.updatePhotoUri(newAvatarUri)
-                        },
+                        onPhotoSelected = viewModel::onAction,
                         onContinue = {
-                            viewModel.updateCurrentStep(5)
+                            viewModel.onAction(OnboardingAction.StepUpdate(OnboardingStep.SUMMARY))
                             navController.navigate(NavigationItem.Summary.route)
                         },
-                        uiState = photoUiState
+                        uiState = uiState.photoUiModel
                     )
                 }
 
                 composable(NavigationItem.Summary.route) {
                     SummaryScreen(
-                        email = emailUiState.email,
-                        fullName = fullNameUiState.fullName,
-                        phoneNumber = phoneUiState.phoneNumber,
-                        avatarUri = photoUiState.uri,
+                        email = uiState.emailUiModel.email,
+                        fullName = uiState.fullNameUiModel.fullName,
+                        phoneNumber = uiState.phoneUiModel.phoneNumber,
+                        avatarUri = uiState.photoUiModel.uri,
                         onContinue = onOnboardingCompleted
                     )
                 }

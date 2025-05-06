@@ -21,13 +21,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import pl.kacper.misterski.feature.onboarding.R
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
 import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
 
 @Composable
 fun PhoneScreen(
     modifier: Modifier,
     uiState: PhoneUiModel,
-    onPhoneNumberChanged: (String) -> Unit,
+    onPhoneNumberChanged: (OnboardingAction) -> Unit,
     onContinueClicked: () -> Unit
 ) {
 
@@ -53,7 +54,9 @@ fun PhoneScreen(
 
         OutlinedTextField(
             value = uiState.phoneNumber,
-            onValueChange = onPhoneNumberChanged,
+            onValueChange = { newPhoneNumber ->
+                onPhoneNumberChanged(OnboardingAction.PhoneUpdate(newPhoneNumber))
+            },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             modifier = Modifier
                 .fillMaxWidth()

@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import pl.kacper.misterski.feature.onboarding.R
+import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
 import pl.kacper.misterski.feature.onboarding.ui.common.Avatar
 import pl.kacper.misterski.feature.onboarding.ui.common.AvatarPlaceholder
 import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
@@ -31,14 +32,14 @@ import pl.kacper.misterski.feature.onboarding.ui.common.ContinueButton
 fun PhotoScreen(
     modifier: Modifier = Modifier,
     uiState: PhotoUiModel,
-    onPhotoSelected: (Uri?) -> Unit,
+    onPhotoSelected: (OnboardingAction) -> Unit,
     onContinue: () -> Unit
 ) {
 
     val photoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        onPhotoSelected(uri)
+        onPhotoSelected(OnboardingAction.PhotoUpdate(uri))
     }
 
     Column(
