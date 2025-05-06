@@ -10,7 +10,7 @@ import pl.kacper.misterski.domain.dog.repository.DogRepository
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object DogsDomainModule {
+internal object DogsDomainModule {
 
     @Provides
     fun provideGetDogsUseCase(dogRepository: DogRepository,
