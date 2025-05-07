@@ -1,5 +1,5 @@
 package pl.kacper.misterski.feature.onboarding.ui.photo
 
-import android.net.Uri
+import java.io.Serializable
 
-data class PhotoUiModel(val uri: Uri? = null,val continueButtonEnabled: Boolean = false)
+data class PhotoUiModel(val uriString: String? = null, val continueButtonEnabled: Boolean = false) : Serializable

@@ -1,3 +1,5 @@
 package pl.kacper.misterski.feature.onboarding.ui.full_name
 
-data class FullNameUiModel(val enableContinueButton: Boolean = false, val fullName: String = "")
+import java.io.Serializable
+
+data class FullNameUiModel(val enableContinueButton: Boolean = false, val fullName: String = "") : Serializable

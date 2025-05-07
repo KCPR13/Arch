@@ -7,6 +7,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
@@ -119,7 +120,7 @@ fun NavGraphBuilder.onboarding(
                         email = uiState.emailUiModel.email,
                         fullName = uiState.fullNameUiModel.fullName,
                         phoneNumber = uiState.phoneUiModel.phoneNumber,
-                        avatarUri = uiState.photoUiModel.uri,
+                        avatarUri = uiState.photoUiModel.uriString?.toUri(),
                         onContinue = onOnboardingCompleted
                     )
                 }

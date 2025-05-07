@@ -11,5 +11,6 @@ data class OnboardingUiState(
     val phoneUiModel: PhoneUiModel = PhoneUiModel(),
     val fullNameUiModel: FullNameUiModel = FullNameUiModel(),
     val photoUiModel: PhotoUiModel = PhotoUiModel()
-)
+) : java.io.Serializable
+
 

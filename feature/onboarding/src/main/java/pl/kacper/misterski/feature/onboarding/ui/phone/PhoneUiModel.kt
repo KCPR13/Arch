@@ -1,3 +1,5 @@
 package pl.kacper.misterski.feature.onboarding.ui.phone
 
-data class PhoneUiModel(val phoneNumber: String = "", val continueButtonEnabled: Boolean = false)
+import java.io.Serializable
+
+data class PhoneUiModel(val phoneNumber: String = "", val continueButtonEnabled: Boolean = false) : Serializable

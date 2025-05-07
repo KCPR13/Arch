@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import pl.kacper.misterski.feature.onboarding.R
 import pl.kacper.misterski.feature.onboarding.ui.OnboardingAction
 import pl.kacper.misterski.feature.onboarding.ui.common.Avatar
@@ -55,9 +56,9 @@ fun PhotoScreen(
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        if (uiState.uri != null) {
+        if (uiState.uriString != null) {
             Avatar(
-                uri = uiState.uri,
+                uri = uiState.uriString.toUri(),
                 modifier = Modifier
                     .size(128.dp)
                     .clip(CircleShape)
