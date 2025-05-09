@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,7 +31,7 @@ fun NavGraphBuilder.onboarding(
         val navController = rememberNavController()
         val viewModel: OnboardingViewModel = hiltViewModel()
 
-        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        val uiState = viewModel.uiState
 
         Scaffold(
             modifier = modifier,
