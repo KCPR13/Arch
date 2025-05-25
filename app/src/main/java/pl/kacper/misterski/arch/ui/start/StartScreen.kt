@@ -33,6 +33,7 @@ internal fun StartScreen(
     onDogsSelected: () -> Unit,
     onNewsSelected: () -> Unit,
     onOnboardingSelected: () -> Unit,
+    onCombineTestSelected: () -> Unit,
     locationStatusUiModel: LocationStatusUiModel
 ) {
     Column(modifier) {
@@ -71,6 +72,16 @@ internal fun StartScreen(
                 textAlign = TextAlign.Center
             )
         }
+        Spacer(Modifier.fillMaxWidth())
+        Button(
+            modifier = Modifier.padding(16.dp),
+            onClick = onCombineTestSelected) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(R.string.combine_test),
+                textAlign = TextAlign.Center
+            )
+        }
 
     }
 }
@@ -103,6 +114,7 @@ private fun StartScreenPreview() {
         onDogsSelected = {},
         onNewsSelected = {},
         onOnboardingSelected = {},
+        onCombineTestSelected = {},
         locationStatusUiModel = LocationStatusUiModel("Title", Icons.Default.LocationOn)
     )
 }

@@ -19,7 +19,7 @@ internal class DogsRepositoryImpl @Inject constructor(
     private val dogsLocalDataSource: DogsLocalDataSource
 ) : DogRepository {
 
-    override suspend fun fetchDogs() = withContext(Dispatchers.IO)
+    override suspend fun fetchDogs(param:Int) = withContext(Dispatchers.IO)
     {
         val response = dogsRemoteDataSource.fetchDogs()
 

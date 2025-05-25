@@ -20,7 +20,8 @@ fun NavGraphBuilder.start(
             onDogsSelected = onDogsSelected,
             onNewsSelected = onNewsSelected,
             onOnboardingSelected = onOnboardingSelected,
-            locationStatusUiModel = viewModel.locationStatus
+            locationStatusUiModel = viewModel.locationStatus,
+            onCombineTestSelected = viewModel::onCombineTestSelected,
         )
     }
 }

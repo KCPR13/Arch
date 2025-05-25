@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class DogsViewModel @Inject constructor(getDogsUseCase: GetDogsUseCase) : ViewModel() {
 
-    val uiState = getDogsUseCase.invoke().map { result ->
+    val uiState = getDogsUseCase.invoke(null).map { result ->
         when (result) {
             is Result.Failure -> DogsUiState.Failure(result.error)
             is Result.Success -> DogsUiState.Success(result.data.mapToDogsUiModels())

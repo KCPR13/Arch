@@ -16,17 +16,18 @@ class GetDogsUseCase(
     private val formatDateUseCase: FormatDateUseCase
 ) {
 
-    operator fun invoke() = flow {
+    operator fun invoke(param: Int?) = flow { // TODO K BUG 1
+        param?.let { paramNotNull ->
+            when (val dogsResult = dogRepository.fetchDogs(paramNotNull)) {
+                is Result.Failure -> emit(Result.Failure(dogsResult.error))
+                is Result.Success -> {
 
-        when (val dogsResult = dogRepository.fetchDogs()) {
-            is Result.Failure -> emit(Result.Failure(dogsResult.error))
-            is Result.Success -> {
+                    val now = OffsetDateTime.now()
+                    val date = formatDateUseCase(now).firstOrNull()?.getDataOrNull()
+                    val mapped = dogsResult.data.mapToDogs(date)
 
-                val now = OffsetDateTime.now()
-                val date = formatDateUseCase(now).firstOrNull()?.getDataOrNull()
-                val mapped = dogsResult.data.mapToDogs(date)
-
-                emit(Result.Success(mapped))
+                    emit(Result.Success(mapped))
+                }
             }
         }
     }.flowOn(Dispatchers.IO)
