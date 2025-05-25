@@ -1,9 +1,11 @@
 package pl.kacper.misterski.data.dog.model.remote
 
 
+import androidx.annotation.Keep
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Keep
 @Serializable
 internal data class Breed(
     @SerialName("height")
