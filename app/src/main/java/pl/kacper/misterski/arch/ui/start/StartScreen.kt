@@ -1,5 +1,8 @@
 package pl.kacper.misterski.arch.ui.start
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,13 +33,20 @@ import pl.kacper.misterski.arch.ui.start.model.LocationStatusUiModel
 @Composable
 internal fun StartScreen(
     modifier: Modifier = Modifier,
+    state: StartState,
     onDogsSelected: () -> Unit,
     onNewsSelected: () -> Unit,
     onOnboardingSelected: () -> Unit,
+    onCameraPermissionGranted: (Boolean) -> Unit,
     locationStatusUiModel: LocationStatusUiModel
 ) {
     Column(modifier) {
-
+        val permissionLauncher = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestPermission(),
+            onResult = { isGranted ->
+                onCameraPermissionGranted.invoke(isGranted)
+            }
+        )
         LocationStatus(locationStatusUiModel)
         Spacer(Modifier.fillMaxWidth())
 
@@ -46,7 +56,7 @@ internal fun StartScreen(
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(pl.kacper.misterski.arch.R.string.dogs_title),
+                text = stringResource(R.string.dogs_title),
                 textAlign = TextAlign.Center
             )
         }
@@ -57,7 +67,7 @@ internal fun StartScreen(
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(pl.kacper.misterski.arch.R.string.news_title),
+                text = stringResource(R.string.news_title),
                 textAlign = TextAlign.Center
             )
         }
@@ -71,6 +81,22 @@ internal fun StartScreen(
                 textAlign = TextAlign.Center
             )
         }
+        Spacer(Modifier.fillMaxWidth())
+        Button(
+            modifier = Modifier.padding(16.dp),
+            onClick = {
+                if (!state.cameraPermissionGranted) {
+                    permissionLauncher.launch(Manifest.permission.CAMERA)
+                }
+            }) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(R.string.ask_camera_permission),
+                textAlign = TextAlign.Center
+            )
+        }
+        Spacer(Modifier.fillMaxWidth())
+        BatteryStatus(Modifier.padding(16.dp))
 
     }
 }
@@ -103,6 +129,11 @@ private fun StartScreenPreview() {
         onDogsSelected = {},
         onNewsSelected = {},
         onOnboardingSelected = {},
-        locationStatusUiModel = LocationStatusUiModel("Title", Icons.Default.LocationOn)
+        locationStatusUiModel = LocationStatusUiModel("Title", Icons.Default.LocationOn),
+        modifier = Modifier,
+        state = StartState(
+            cameraPermissionGranted = false
+        ),
+        onCameraPermissionGranted = { }
     )
 }
