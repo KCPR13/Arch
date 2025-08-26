@@ -1,5 +1,9 @@
 package pl.kacper.misterski.arch.ui.start
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,17 +20,25 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import pl.kacper.misterski.arch.R
 import pl.kacper.misterski.arch.ui.start.model.LocationStatusUiModel
 
+// TODO K a może activity ? Co gdy permission jest wykorzystywany na kilku ekranach?
+// TODO K stan przechowujemy w VM?
 @Composable
 internal fun StartScreen(
     modifier: Modifier = Modifier,
@@ -35,6 +47,22 @@ internal fun StartScreen(
     onOnboardingSelected: () -> Unit,
     locationStatusUiModel: LocationStatusUiModel
 ) {
+    val context = LocalContext.current
+    var hasCameraPermission by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        )
+    }
+
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        hasCameraPermission = isGranted
+    }
+
     Column(modifier) {
 
         LocationStatus(locationStatusUiModel)
@@ -71,6 +99,19 @@ internal fun StartScreen(
                 textAlign = TextAlign.Center
             )
         }
+        Spacer(Modifier.fillMaxWidth())
+
+        if (hasCameraPermission) {
+            Text( modifier = Modifier.padding(16.dp).fillMaxWidth(), text = "Camera permission granted ✅",
+                textAlign = TextAlign.Center)
+        } else {
+            Button(
+                modifier = Modifier.padding(16.dp).fillMaxWidth(),
+                onClick = { launcher.launch(Manifest.permission.CAMERA) }) {
+                Text("Request Camera Permission")
+            }
+        }
+
 
     }
 }
